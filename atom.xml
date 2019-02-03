@@ -6,30 +6,55 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://life0sfc.github.io/"/>
-  <updated>2019-02-03T08:30:40.317Z</updated>
+  <updated>2019-02-03T08:56:05.798Z</updated>
   <id>https://life0sfc.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>搭建一个blog</title>
+    <link href="https://life0sfc.github.io/2019/02/03/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAblog/"/>
+    <id>https://life0sfc.github.io/2019/02/03/搭建一个blog/</id>
+    <published>2019-02-03T08:56:47.001Z</published>
+    <updated>2019-02-03T08:56:05.798Z</updated>
+    
+    <content type="html"><![CDATA[<p>我是在windows下使用hexo来搭建blog的，hexo是一款简单、快速的博客框架，可以用来写<code>markdown</code>文件的博客</p><h4 id="一、安装git和nodejs"><a href="#一、安装git和nodejs" class="headerlink" title="一、安装git和nodejs"></a>一、安装git和nodejs</h4><p>git是一种分布式版本控制系统，我们搭建的<code>blog</code>要用到github，使用<br><code>username.github.io</code>为域名。<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a> 选择合适的版本下载并安装，安装完成后，右键会有关于git的两个按键</p><p>nodejs是运行在服务端的<code>JavaScript</code>,<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">下载地址</a>选择合适的版本下载并安装</p><h4 id="二、安装hexo"><a href="#二、安装hexo" class="headerlink" title="二、安装hexo"></a>二、安装hexo</h4><p>在你合适的地方新建一个<code>hexo</code>文件夹用于安装hexo，这里我选择在E盘下，在hexo文件夹中，打开git的命令行</p><pre><code>npm install -g hexo-cli    #-g 表示全局安装hexo init                  #初始化hexo install               #安装依赖</code></pre><p>本地测试</p><pre><code>hexo g   //生成文件,和更新类似hexo s  //本地启动，可在http://localhost:4000/本地访问博客</code></pre><p>在生成以及部署文章之前，需要安装一个扩展：<code>npm install hexo-deployer-git --save</code></p><p><img src="https://i.imgur.com/HeIJKGb.png" alt=""></p><ul><li><code>themes</code>文件夹稍后可以安装适合自己的主题</li><li><p><code>_config.yml</code>在文件中可修改配置文件<br><img src="https://i.imgur.com/LiYPDoY.png" alt=""></p></li><li><p><code>_post</code>文件夹中添加你写的md格式的博客</p></li></ul><h4 id="三、生成SSH并添加到github"><a href="#三、生成SSH并添加到github" class="headerlink" title="三、生成SSH并添加到github"></a>三、生成SSH并添加到github</h4><p>先在Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io。并且需要勾选Initialize this repository with a README<br><img src="https://i.imgur.com/TocS67e.png" alt=""><br>现在我们可以发现可以访问https://{username}.github.io/了<br>对本地的<code>hexo博客根目录\_config.yml</code>进行修改，添加如下内容</p><pre><code>deploy:   type: git  repository: https://github.com/life0sfc/life0sfc.github.io.git  branch: master</code></pre><p>将Hexo与Github page联系起来，设置Git的username和email</p><pre><code>$ git config --global user.name &quot;your name&quot;  $ git config --global user.email &quot;your_email@youremail.com&quot;</code></pre><p>创建ssh密钥</p><pre><code>ssh-keygen -t rsa -C “your_email@youremail.com”</code></pre><p>会在~/.ssh文件夹中产生密钥文件<br><img src="https://i.imgur.com/Gg6thGN.png" alt=""></p><p>登录Github，点击头像下的settings，添加ssh，id_rsa.pub文件里的内容复制上去<br><img src="https://i.imgur.com/Y3DgM7M.png" alt=""><br>输入<code>ssh -T git@github.com</code>，测试添加ssh是否成功<br><img src="https://i.imgur.com/A6WxNeZ.png" alt=""><br>可以看到已经成功了</p><p>在Hexo博客根目录<br><img src="https://i.imgur.com/VUDRrdJ.png" alt=""><br>上传到github上<br><img src="https://i.imgur.com/wsSkS5p.png" alt=""></p><h4 id="四、优化你的博客"><a href="#四、优化你的博客" class="headerlink" title="四、优化你的博客"></a>四、优化你的博客</h4><h5 id="4-1、更改博客主题"><a href="#4-1、更改博客主题" class="headerlink" title="4.1、更改博客主题"></a>4.1、更改博客主题</h5><pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre><p>在<code>_config.yml</code>(这是在Hexo博客根目录下的文件)中将<code>theme: landscape</code>改成<code>theme: next</code></p><h5 id="4-2添加RSS"><a href="#4-2添加RSS" class="headerlink" title="4.2添加RSS"></a>4.2添加RSS</h5><p>在hexo根目录打开git bash，安装插件：</p><pre><code>npm install --save hexo-generator-feed</code></pre><p>修改<code>hexo博客根目录\_config.yml</code>文件，添加</p><pre><code>feed: # RSS订阅插件  type: atom  path: atom.xml  limit: 0plugins: hexo-generate-feed</code></pre><p>修改<code>hexo博客根目录\themes\next\_config.yml</code>（这是主题配置文件）文件，添加</p><pre><code>rss: /atom.xml</code></pre><h5 id="4-3-杂"><a href="#4-3-杂" class="headerlink" title="4.3 杂"></a>4.3 杂</h5><p><a href="https://notes.doublemine.me/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener">统计阅读次数</a></p><p>添加菜单选项</p><pre><code>hexo new page &quot;categories&quot;   // 添加分类页面hexo new page &quot;tags&quot;    // 添加标签页面hexo new page &quot;about&quot;     // 添加关于页面</code></pre><p><img src="https://i.imgur.com/8bB7JNv.png" alt=""></p><p>新建一篇博客，在cmd执行命令：hexo new post “博客名”</p><p>参考链接</p><blockquote><p><a href="https://zhuanlan.zhihu.com/p/33616481" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33616481</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我是在windows下使用hexo来搭建blog的，hexo是一款简单、快速的博客框架，可以用来写&lt;code&gt;markdown&lt;/code&gt;文件的博客&lt;/p&gt;
+&lt;h4 id=&quot;一、安装git和nodejs&quot;&gt;&lt;a href=&quot;#一、安装git和nodejs&quot; class=&quot;
+      
+    
+    </summary>
+    
+    
+      <category term="杂" scheme="https://life0sfc.github.io/tags/%E6%9D%82/"/>
+    
+  </entry>
   
   <entry>
     <title>helloword</title>
     <link href="https://life0sfc.github.io/2019/02/03/helloword/"/>
     <id>https://life0sfc.github.io/2019/02/03/helloword/</id>
     <published>2019-02-03T08:30:06.000Z</published>
-    <updated>2019-02-03T08:30:40.317Z</updated>
+    <updated>2019-02-03T08:59:46.108Z</updated>
     
-    <content type="html"><![CDATA[<p>helloword</p>]]></content>
+    <content type="html"><![CDATA[<h4 id="Helloworld"><a href="#Helloworld" class="headerlink" title="Helloworld"></a>Helloworld</h4><p>博客搭建好了，记录所学（可能会很杂），提高自己。<br>立个flag: 每周至少更新一篇，</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;helloword&lt;/p&gt;
-
+        &lt;h4 id=&quot;Helloworld&quot;&gt;&lt;a href=&quot;#Helloworld&quot; class=&quot;headerlink&quot; title=&quot;Helloworld&quot;&gt;&lt;/a&gt;Helloworld&lt;/h4&gt;&lt;p&gt;博客搭建好了，记录所学（可能会很杂），提高自己。&lt;br&gt;立个flag: 每周
       
     
     </summary>
     
+    
+      <category term="小记" scheme="https://life0sfc.github.io/tags/%E5%B0%8F%E8%AE%B0/"/>
     
   </entry>
   
