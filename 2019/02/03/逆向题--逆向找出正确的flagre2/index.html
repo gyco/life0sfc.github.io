@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="reverse,ctf,">
 
 
 
@@ -81,13 +81,32 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="life0sfc">
-<meta property="og:url" content="https://life0sfc.github.io/archives/2019/index.html">
+<meta name="description" content="题目：逆向找出正确的flagre2先检查一下没壳，32位的程序 直接ida分析，查看伪c 先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现Try again!，没有看到显示成功的字符串，一步一步分析吧！ 进入sub_401032()函数观察发现进行了异或运算401100h^95h^input的第一个字符，得出return值的范围为4">
+<meta name="keywords" content="reverse,ctf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="逆向题--逆向找出正确的flagre2">
+<meta property="og:url" content="https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/index.html">
 <meta property="og:site_name" content="life0sfc">
+<meta property="og:description" content="题目：逆向找出正确的flagre2先检查一下没壳，32位的程序 直接ida分析，查看伪c 先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现Try again!，没有看到显示成功的字符串，一步一步分析吧！ 进入sub_401032()函数观察发现进行了异或运算401100h^95h^input的第一个字符，得出return值的范围为4">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="https://i.imgur.com/PtuW1uK.png">
+<meta property="og:image" content="https://i.imgur.com/dKgCXwO.png">
+<meta property="og:image" content="https://i.imgur.com/soVffuk.png">
+<meta property="og:image" content="https://i.imgur.com/cJprtgR.png">
+<meta property="og:image" content="https://i.imgur.com/usT4oTV.png">
+<meta property="og:image" content="https://i.imgur.com/14BBSUt.png">
+<meta property="og:image" content="https://i.imgur.com/jWccMih.png">
+<meta property="og:image" content="https://i.imgur.com/kMAqdUe.png">
+<meta property="og:image" content="https://i.imgur.com/tUS455v.png">
+<meta property="og:image" content="https://i.imgur.com/e74pipH.png">
+<meta property="og:image" content="https://i.imgur.com/FEsa7AU.png">
+<meta property="og:image" content="https://i.imgur.com/L7Z8yJQ.png">
+<meta property="og:image" content="https://i.imgur.com/i14WGuZ.png">
+<meta property="og:updated_time" content="2018-10-14T03:38:17.805Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="life0sfc">
+<meta name="twitter:title" content="逆向题--逆向找出正确的flagre2">
+<meta name="twitter:description" content="题目：逆向找出正确的flagre2先检查一下没壳，32位的程序 直接ida分析，查看伪c 先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现Try again!，没有看到显示成功的字符串，一步一步分析吧！ 进入sub_401032()函数观察发现进行了异或运算401100h^95h^input的第一个字符，得出return值的范围为4">
+<meta name="twitter:image" content="https://i.imgur.com/PtuW1uK.png">
 
 
 
@@ -117,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://life0sfc.github.io/archives/2019/">
+  <link rel="canonical" href="https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/">
 
 
 
 
 
-  <title>Archive | life0sfc</title>
+  <title>逆向题--逆向找出正确的flagre2 | life0sfc</title>
   
 
 
@@ -142,7 +161,7 @@
     
   
 
-  <div class="container sidebar-position-left page-archive">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -256,247 +275,245 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block archive">
-    <div id="posts" class="posts-collapse">
-      <span class="archive-move-on"></span>
+  <div id="posts" class="posts-expand">
+    
 
-      <span class="archive-page-counter">
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head_icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="life0sfc">
+    </span>
+
+    
+      <header class="post-header">
+
         
         
+          <h1 class="post-title" itemprop="name headline">逆向题--逆向找出正确的flagre2</h1>
         
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-03T17:05:32+08:00">
+                2019-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
-        
-        Um..! 6 posts in total. Keep on posting.
-      </span>
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/ctf/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf</span>
+                  </a>
+                </span>
 
-      
-
-        
-        
-        
-
-        
+                
+                
+              
+            </span>
           
-          <div class="collection-title">
-            <h1 class="archive-year" id="archive-year-2019">2019</h1>
-          </div>
-        
-        
 
-        
+          
+            
+          
 
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+          
+          
+             <span id="/2019/02/03/逆向题--逆向找出正确的flagre2/" class="leancloud_visitors" data-flag-title="逆向题--逆向找出正确的flagre2">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
 
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/03/正则表达式/" itemprop="url">
+          
+
+          
+            <div class="post-wordcount">
               
-                <span itemprop="name">正则表达式</span>
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  400
+                </span>
               
-            </a>
-        
-      </h2>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-03T17:05:32+08:00" content="2019-02-03">
-          02-03
-        </time>
-      </div>
+              
 
-    </header>
-  </article>
+              
+            </div>
+          
 
+          
 
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/03/abexcrackme#2/" itemprop="url">
-              
-                <span itemprop="name">abexcrackme#2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-03T17:05:32+08:00" content="2019-02-03">
-          02-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
       
 
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/03/gdb的使用/" itemprop="url">
-              
-                <span itemprop="name">gdb的使用</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-03T17:05:32+08:00" content="2019-02-03">
-          02-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
+      
+        <h4 id="题目：逆向找出正确的flagre2"><a href="#题目：逆向找出正确的flagre2" class="headerlink" title="题目：逆向找出正确的flagre2"></a>题目：<a href="https://pan.baidu.com/s/1uDEQ0gRUxHETYd_u9M2ghQ" target="_blank" rel="noopener">逆向找出正确的flagre2</a></h4><p>先检查一下<br><img src="https://i.imgur.com/PtuW1uK.png" alt=""><br>没壳，32位的程序</p>
+<p>直接ida分析，查看伪c<br><img src="https://i.imgur.com/dKgCXwO.png" alt=""></p>
+<p>先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现<code>Try again!</code>，没有看到显示成功的字符串，一步一步分析吧！</p>
+<p>进入sub_401032()函数观察<br><img src="https://i.imgur.com/soVffuk.png" alt=""><br>发现进行了异或运算<code>401100h^95h^input的第一个字符</code>，<br>得出return值的范围为<code>401100h~4011FFh</code><br>查看汇编代码</p>
+<p><img src="https://i.imgur.com/cJprtgR.png" alt=""></p>
+<ul>
+<li>1 中将eax放入<code>[ebp+var_1C]</code></li>
+<li>2 与0进行比较，执行后zf=0,不发生跳转</li>
+<li>3 call addr,addr范围为<code>401100h~4011FFh</code></li>
+</ul>
+<p>观察<code>401100h~4011FFh</code>范围内的函数，发现ida没有识别出来，直接create function,<code>sub_401100() sub_401160() sub_4011C0()</code></p>
+<p><img src="https://i.imgur.com/usT4oTV.png" alt=""></p>
+<p><img src="https://i.imgur.com/14BBSUt.png" alt=""></p>
+<p><img src="https://i.imgur.com/jWccMih.png" alt=""></p>
+<p>00h^95h=149</p>
+<p>60h^95h=245</p>
+<p>c0h^95h=85</p>
+<p>这里只有85小于ffh,所以会执行sub_4011C0()函数，打印出<code>o</code>字符，从输入的字符串中去第二个字符，分别于0x8f和^0x401200,范围为<code>0x401200~0x4012ff</code>,与上一次的情况相似，也是三个函数<br><img src="https://i.imgur.com/kMAqdUe.png" alt=""><br><img src="https://i.imgur.com/tUS455v.png" alt=""><br><img src="https://i.imgur.com/e74pipH.png" alt=""></p>
+<p>推测应该是<code>n</code>,我们可以在下面的图中看到字符的引用，可以看到<code>Try again!</code></p>
+<p><img src="https://i.imgur.com/FEsa7AU.png" alt=""><br>这一题的基本逻辑就出来了，输入字符串，取每一位与下面图中数据异或，决定下一个执行的函数并打印出相应的字符。</p>
+<p><img src="https://i.imgur.com/L7Z8yJQ.png" alt=""><br>多次尝试，发现打印字符串应为<code>Congratulate</code>,推出输入的<code>input</code></p>
+<p><img src="https://i.imgur.com/i14WGuZ.png" alt=""></p>
+<p>在这题中ida的伪C代码会让人看不懂，还是直接通过看汇编代码去分析，对于不清晰的指令结合od去做判断。</p>
 
       
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/03/逆向题--逆向找出正确的flagre2/" itemprop="url">
-              
-                <span itemprop="name">逆向题--逆向找出正确的flagre2</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-03T17:05:32+08:00" content="2019-02-03">
-          02-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/03/搭建一个blog/" itemprop="url">
-              
-                <span itemprop="name">搭建一个blog</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-03T16:56:47+08:00" content="2019-02-03">
-          02-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
-        
-        
-        
-
-        
-        
-
-        
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2019/02/03/helloword/" itemprop="url">
-              
-                <span itemprop="name">helloword</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-03T16:30:06+08:00" content="2019-02-03">
-          02-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-      
-
     </div>
+    
+    
+    
+
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/" title="逆向题--逆向找出正确的flagre2">https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/reverse/" rel="tag"># reverse</a>
+          
+            <a href="/tags/ctf/" rel="tag"># ctf</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/03/搭建一个blog/" rel="next" title="搭建一个blog">
+                <i class="fa fa-chevron-left"></i> 搭建一个blog
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/03/gdb的使用/" rel="prev" title="gdb的使用">
+                gdb的使用 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
 
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -504,6 +521,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -524,8 +545,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -616,6 +646,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目：逆向找出正确的flagre2"><span class="nav-number">1.</span> <span class="nav-text">题目：逆向找出正确的flagre2</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -749,6 +795,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
