@@ -97,8 +97,11 @@
 <meta property="og:image" content="https://i.imgur.com/A6WxNeZ.png">
 <meta property="og:image" content="https://i.imgur.com/VUDRrdJ.png">
 <meta property="og:image" content="https://i.imgur.com/wsSkS5p.png">
+<meta property="og:image" content="https://i.imgur.com/3055jwd.png">
+<meta property="og:image" content="https://i.imgur.com/tWn7tce.png">
+<meta property="og:image" content="https://i.imgur.com/MbrpqQB.png">
 <meta property="og:image" content="https://i.imgur.com/8bB7JNv.png">
-<meta property="og:updated_time" content="2019-02-03T13:59:18.724Z">
+<meta property="og:updated_time" content="2019-02-03T15:03:57.120Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建一个blog">
 <meta name="twitter:description" content="我是在windows下使用hexo来搭建blog的，hexo是一款简单、快速的博客框架，可以用来写markdown文件的博客 一、安装git和nodejsgit是一种分布式版本控制系统，我们搭建的blog要用到github，使用username.github.io为域名。下载地址 选择合适的版本下载并安装，安装完成后，右键会有关于git的两个按键 nodejs是运行在服务端的JavaScript,">
@@ -328,6 +331,16 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/03/搭建一个blog/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/03/搭建一个blog/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -357,7 +370,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  733
+                  1.2k
                 </span>
               
 
@@ -426,12 +439,50 @@ $ git config --global user.email &quot;your_email@youremail.com&quot;
 plugins: hexo-generate-feed
 </code></pre><p>修改<code>hexo博客根目录\themes\next\_config.yml</code>（这是主题配置文件）文件，添加</p>
 <pre><code>rss: /atom.xml
-</code></pre><h5 id="4-3-添加评论区并加入搜索引擎"><a href="#4-3-添加评论区并加入搜索引擎" class="headerlink" title="4.3 添加评论区并加入搜索引擎"></a>4.3 添加评论区并加入搜索引擎</h5><h5 id="4-4-杂"><a href="#4-4-杂" class="headerlink" title="4.4 杂"></a>4.4 杂</h5><p><a href="https://notes.doublemine.me/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener">统计阅读次数</a></p>
-<p>添加菜单选项</p>
-<pre><code>hexo new page &quot;categories&quot;   // 添加分类页面
-hexo new page &quot;tags&quot;    // 添加标签页面
-hexo new page &quot;about&quot;     // 添加关于页面
-</code></pre><p><img src="https://i.imgur.com/8bB7JNv.png" alt=""></p>
+</code></pre><h5 id="4-3-将博客地址加入搜索引擎"><a href="#4-3-将博客地址加入搜索引擎" class="headerlink" title="4.3 将博客地址加入搜索引擎"></a>4.3 将博客地址加入搜索引擎</h5><p>虽然我们将自己的博客托管到了github上，但是github是不会将站点信息提交给搜索引擎的（即使用搜索引擎是搜不到我们的博客的），所以我们必须手动将自己的博客站点提交给谷歌、百度的搜索引擎。</p>
+<ul>
+<li>验证站点<br>打开<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="noopener">谷歌搜索引擎验证</a>（需要翻墙），点击添加网站，输入自己的博客 地址，选择HTML标记验证</li>
+</ul>
+<p><img src="https://i.imgur.com/3055jwd.png" alt=""></p>
+<p>打开本地博客主题下的<code>layout/_partial</code>文件夹，有一个名为<code>head.swig</code>的文件，使用编辑器打开，将刚才复制的两句 meta 代码粘贴进去<br>保存文件后，输入以下命令将博客重新部署到 GitHub服务器中。</p>
+<pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d
+</code></pre><p>完成验证<br><img src="https://i.imgur.com/tWn7tce.png" alt=""></p>
+<ul>
+<li>生成站点地图</li>
+</ul>
+<p>在hexo根目录打开git bash，安装插件：</p>
+<pre><code>npm install hexo-generator-sitemap --save
+npm install hexo-generator-baidu-sitemap --save
+</code></pre><p>打开hexo目录下的<code>_config.yml</code>文件，修改<code>url</code>参数为博客的首页地址，这样是为了保证能正确生成<code>sitemap.xml</code>文件中的地址。<br>添加以下配置</p>
+<pre><code>sitemap:           //自动生成sitemap.xml
+  path: sitemap.xml
+baidusitemap: 
+  path: baidusitemap.xml
+</code></pre><p>其中sitemap.xml适合提交给谷歌搜素引擎，baidusitemap.xml适合提交百度搜索引擎，重新部署博客。</p>
+<p>在<a href="https://search.google.com/search-console/sitemaps" target="_blank" rel="noopener">谷歌站点控制台</a>，提交站点地图<br><img src="https://i.imgur.com/MbrpqQB.png" alt=""><br>完成</p>
+<h5 id="4-4-杂"><a href="#4-4-杂" class="headerlink" title="4.4 杂"></a>4.4 杂</h5><ul>
+<li><p><a href="https://notes.doublemine.me/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener">统计阅读次数</a></p>
+</li>
+<li><p>添加评论区</p>
+</li>
+</ul>
+<p>添加Valine评论系统<br>在主题配置文件中，修改以下处代码</p>
+<pre><code>valine:
+  enable: true         #是否启用
+  appid:             #Leancloud中的appid
+  appkey:             #Leancloud中的appkey
+  notify: false     #收到回复是否Email通知
+  verify: false     #回复验证码
+  placeholder:       #评论框欢迎语
+  avatar: mm         #gravatar 头像默认风格
+  guest_info: nick,email,link     #需填写的信息
+  pageSize: 10         #评论页面大小
+</code></pre><ul>
+<li><p>添加菜单选项</p>
+<p>  hexo new page “categories”   // 添加分类页面<br>  hexo new page “tags”    // 添加标签页面<br>  hexo new page “about”     // 添加关于页面</p>
+</li>
+</ul>
+<p><img src="https://i.imgur.com/8bB7JNv.png" alt=""></p>
 <p>新建一篇博客，在cmd执行命令：hexo new post “博客名”</p>
 <p>参考链接</p>
 <blockquote>
@@ -495,8 +546,8 @@ hexo new page &quot;about&quot;     // 添加关于页面
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/03/逆向题--逆向找出正确的flagre2/" rel="prev" title="逆向题--逆向找出正确的flagre2">
-                逆向题--逆向找出正确的flagre2 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/03/正则表达式/" rel="prev" title="正则表达式">
+                正则表达式 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -526,6 +577,9 @@ hexo new page &quot;about&quot;     // 添加关于页面
 
           
 
+  
+    <div class="comments" id="comments">
+    </div>
   
 
 
@@ -576,7 +630,7 @@ hexo new page &quot;about&quot;     // 添加关于页面
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">3</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -587,7 +641,7 @@ hexo new page &quot;about&quot;     // 添加关于页面
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -598,7 +652,7 @@ hexo new page &quot;about&quot;     // 添加关于页面
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -660,7 +714,7 @@ hexo new page &quot;about&quot;     // 添加关于页面
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、安装git和nodejs"><span class="nav-number">1.</span> <span class="nav-text">一、安装git和nodejs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、安装hexo"><span class="nav-number">2.</span> <span class="nav-text">二、安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、生成SSH并添加到github"><span class="nav-number">3.</span> <span class="nav-text">三、生成SSH并添加到github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、优化你的博客"><span class="nav-number">4.</span> <span class="nav-text">四、优化你的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-更改博客主题"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 更改博客主题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-添加RSS"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 添加RSS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-添加评论区并加入搜索引擎"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 添加评论区并加入搜索引擎</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-杂"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 杂</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、安装git和nodejs"><span class="nav-number">1.</span> <span class="nav-text">一、安装git和nodejs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、安装hexo"><span class="nav-number">2.</span> <span class="nav-text">二、安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、生成SSH并添加到github"><span class="nav-number">3.</span> <span class="nav-text">三、生成SSH并添加到github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、优化你的博客"><span class="nav-number">4.</span> <span class="nav-text">四、优化你的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-更改博客主题"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 更改博客主题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-添加RSS"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 添加RSS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-将博客地址加入搜索引擎"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 将博客地址加入搜索引擎</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-杂"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 杂</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -841,6 +895,28 @@ hexo new page &quot;about&quot;     // 添加关于页面
 
 
 
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'AVThTOI0JkfJdDQfs5uo9Hpc-gzGzoHsz',
+        appKey: 'wbkK9yrazxOjR8YJ588l8Jft',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
 
 
 
