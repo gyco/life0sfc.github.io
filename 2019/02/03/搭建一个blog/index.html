@@ -98,7 +98,7 @@
 <meta property="og:image" content="https://i.imgur.com/VUDRrdJ.png">
 <meta property="og:image" content="https://i.imgur.com/wsSkS5p.png">
 <meta property="og:image" content="https://i.imgur.com/8bB7JNv.png">
-<meta property="og:updated_time" content="2019-02-03T08:56:05.798Z">
+<meta property="og:updated_time" content="2019-02-03T13:59:18.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="搭建一个blog">
 <meta name="twitter:description" content="我是在windows下使用hexo来搭建blog的，hexo是一款简单、快速的博客框架，可以用来写markdown文件的博客 一、安装git和nodejsgit是一种分布式版本控制系统，我们搭建的blog要用到github，使用username.github.io为域名。下载地址 选择合适的版本下载并安装，安装完成后，右键会有关于git的两个按键 nodejs是运行在服务端的JavaScript,">
@@ -357,7 +357,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  718
+                  733
                 </span>
               
 
@@ -414,9 +414,9 @@ $ git config --global user.email &quot;your_email@youremail.com&quot;
 </code></pre><p>会在~/.ssh文件夹中产生密钥文件<br><img src="https://i.imgur.com/Gg6thGN.png" alt=""></p>
 <p>登录Github，点击头像下的settings，添加ssh，id_rsa.pub文件里的内容复制上去<br><img src="https://i.imgur.com/Y3DgM7M.png" alt=""><br>输入<code>ssh -T git@github.com</code>，测试添加ssh是否成功<br><img src="https://i.imgur.com/A6WxNeZ.png" alt=""><br>可以看到已经成功了</p>
 <p>在Hexo博客根目录<br><img src="https://i.imgur.com/VUDRrdJ.png" alt=""><br>上传到github上<br><img src="https://i.imgur.com/wsSkS5p.png" alt=""></p>
-<h4 id="四、优化你的博客"><a href="#四、优化你的博客" class="headerlink" title="四、优化你的博客"></a>四、优化你的博客</h4><h5 id="4-1、更改博客主题"><a href="#4-1、更改博客主题" class="headerlink" title="4.1、更改博客主题"></a>4.1、更改博客主题</h5><pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next
+<h4 id="四、优化你的博客"><a href="#四、优化你的博客" class="headerlink" title="四、优化你的博客"></a>四、优化你的博客</h4><h5 id="4-1-更改博客主题"><a href="#4-1-更改博客主题" class="headerlink" title="4.1 更改博客主题"></a>4.1 更改博客主题</h5><pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next
 </code></pre><p>在<code>_config.yml</code>(这是在Hexo博客根目录下的文件)中将<code>theme: landscape</code>改成<code>theme: next</code></p>
-<h5 id="4-2添加RSS"><a href="#4-2添加RSS" class="headerlink" title="4.2添加RSS"></a>4.2添加RSS</h5><p>在hexo根目录打开git bash，安装插件：</p>
+<h5 id="4-2-添加RSS"><a href="#4-2-添加RSS" class="headerlink" title="4.2 添加RSS"></a>4.2 添加RSS</h5><p>在hexo根目录打开git bash，安装插件：</p>
 <pre><code>npm install --save hexo-generator-feed
 </code></pre><p>修改<code>hexo博客根目录\_config.yml</code>文件，添加</p>
 <pre><code>feed: # RSS订阅插件
@@ -426,7 +426,7 @@ $ git config --global user.email &quot;your_email@youremail.com&quot;
 plugins: hexo-generate-feed
 </code></pre><p>修改<code>hexo博客根目录\themes\next\_config.yml</code>（这是主题配置文件）文件，添加</p>
 <pre><code>rss: /atom.xml
-</code></pre><h5 id="4-3-杂"><a href="#4-3-杂" class="headerlink" title="4.3 杂"></a>4.3 杂</h5><p><a href="https://notes.doublemine.me/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener">统计阅读次数</a></p>
+</code></pre><h5 id="4-3-添加评论区并加入搜索引擎"><a href="#4-3-添加评论区并加入搜索引擎" class="headerlink" title="4.3 添加评论区并加入搜索引擎"></a>4.3 添加评论区并加入搜索引擎</h5><h5 id="4-4-杂"><a href="#4-4-杂" class="headerlink" title="4.4 杂"></a>4.4 杂</h5><p><a href="https://notes.doublemine.me/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener">统计阅读次数</a></p>
 <p>添加菜单选项</p>
 <pre><code>hexo new page &quot;categories&quot;   // 添加分类页面
 hexo new page &quot;tags&quot;    // 添加标签页面
@@ -660,7 +660,7 @@ hexo new page &quot;about&quot;     // 添加关于页面
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、安装git和nodejs"><span class="nav-number">1.</span> <span class="nav-text">一、安装git和nodejs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、安装hexo"><span class="nav-number">2.</span> <span class="nav-text">二、安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、生成SSH并添加到github"><span class="nav-number">3.</span> <span class="nav-text">三、生成SSH并添加到github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、优化你的博客"><span class="nav-number">4.</span> <span class="nav-text">四、优化你的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1、更改博客主题"><span class="nav-number">4.1.</span> <span class="nav-text">4.1、更改博客主题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2添加RSS"><span class="nav-number">4.2.</span> <span class="nav-text">4.2添加RSS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-杂"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 杂</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、安装git和nodejs"><span class="nav-number">1.</span> <span class="nav-text">一、安装git和nodejs</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、安装hexo"><span class="nav-number">2.</span> <span class="nav-text">二、安装hexo</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、生成SSH并添加到github"><span class="nav-number">3.</span> <span class="nav-text">三、生成SSH并添加到github</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、优化你的博客"><span class="nav-number">4.</span> <span class="nav-text">四、优化你的博客</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-1-更改博客主题"><span class="nav-number">4.1.</span> <span class="nav-text">4.1 更改博客主题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-添加RSS"><span class="nav-number">4.2.</span> <span class="nav-text">4.2 添加RSS</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-添加评论区并加入搜索引擎"><span class="nav-number">4.3.</span> <span class="nav-text">4.3 添加评论区并加入搜索引擎</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-4-杂"><span class="nav-number">4.4.</span> <span class="nav-text">4.4 杂</span></a></li></ol></li></ol></div>
             
 
           </div>
