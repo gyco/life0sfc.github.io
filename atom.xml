@@ -40,34 +40,6 @@
   </entry>
   
   <entry>
-    <title>gdb的使用</title>
-    <link href="https://life0sfc.github.io/2019/02/03/gdb%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://life0sfc.github.io/2019/02/03/gdb的使用/</id>
-    <published>2019-02-03T09:05:32.163Z</published>
-    <updated>2018-10-14T03:55:51.971Z</updated>
-    
-    <content type="html"><![CDATA[<p>gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍</p><h4 id="1、启动"><a href="#1、启动" class="headerlink" title="1、启动"></a>1、启动</h4><pre><code>start</code></pre><h4 id="2、断点"><a href="#2、断点" class="headerlink" title="2、断点"></a>2、断点</h4><pre><code>b *地址b 符号名    break &lt;function&gt; 在函数体入口处下断点。</code></pre><h4 id="3、单步"><a href="#3、单步" class="headerlink" title="3、单步"></a>3、单步</h4><pre><code>si: step in源码单步：next</code></pre><h4 id="4、查看内存"><a href="#4、查看内存" class="headerlink" title="4、查看内存"></a>4、查看内存</h4><pre><code>x/[]i 对指定数量的指令进行反汇编x/[]x 显示指定长度的数据   $rax  x/[]s以字符串形式显示数据</code></pre><p><code>x/10w $esp</code> 相当于显示栈上40B的数据，即栈上10个空间的数据</p><p>除了以上常见的四点外，gdb的常见命令还有</p><ul><li>set命令，常见的是set architecture，设置使用intel还是AT&amp;T语法，更多可使用help set查看</li><li>bt (backtrace)：打印出回溯的所有栈</li><li>disas反汇编命令，直接disas是反汇编当前函数<ul><li>disas /r      (显示汇编指令对应十六进制值)</li><li>disas /m      (如果有源码，显示对应行源码)</li></ul></li><li>help命令，以上的命令都可以查到相关说明</li></ul><p>相关插件<br>peda:<a href="https://github.com/longld/peda" target="_blank" rel="noopener">https://github.com/longld/peda</a><br>libheap:<a href="https://github.com/cloudburst/libheap" target="_blank" rel="noopener">https://github.com/cloudburst/libheap</a><br>以上只是一下gdb常见命令，更多可用help命令去查看，目前只想到这些，以后在补充</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍&lt;/p&gt;
-&lt;h4 id=&quot;1、启动&quot;&gt;&lt;a href=&quot;#1、启动&quot; class=&quot;headerlink&quot; title=&quot;1、启动&quot;&gt;&lt;/a&gt;1、启动&lt;/h4&gt;&lt;pre&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="tools" scheme="https://life0sfc.github.io/categories/tools/"/>
-    
-    
-      <category term="gdb" scheme="https://life0sfc.github.io/tags/gdb/"/>
-    
-      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
     <title>abexcrackme#2</title>
     <link href="https://life0sfc.github.io/2019/02/03/abexcrackme#2/"/>
     <id>https://life0sfc.github.io/2019/02/03/abexcrackme#2/</id>
@@ -96,6 +68,34 @@
   </entry>
   
   <entry>
+    <title>gdb的使用</title>
+    <link href="https://life0sfc.github.io/2019/02/03/gdb%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://life0sfc.github.io/2019/02/03/gdb的使用/</id>
+    <published>2019-02-03T09:05:32.163Z</published>
+    <updated>2018-10-14T03:55:51.971Z</updated>
+    
+    <content type="html"><![CDATA[<p>gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍</p><h4 id="1、启动"><a href="#1、启动" class="headerlink" title="1、启动"></a>1、启动</h4><pre><code>start</code></pre><h4 id="2、断点"><a href="#2、断点" class="headerlink" title="2、断点"></a>2、断点</h4><pre><code>b *地址b 符号名    break &lt;function&gt; 在函数体入口处下断点。</code></pre><h4 id="3、单步"><a href="#3、单步" class="headerlink" title="3、单步"></a>3、单步</h4><pre><code>si: step in源码单步：next</code></pre><h4 id="4、查看内存"><a href="#4、查看内存" class="headerlink" title="4、查看内存"></a>4、查看内存</h4><pre><code>x/[]i 对指定数量的指令进行反汇编x/[]x 显示指定长度的数据   $rax  x/[]s以字符串形式显示数据</code></pre><p><code>x/10w $esp</code> 相当于显示栈上40B的数据，即栈上10个空间的数据</p><p>除了以上常见的四点外，gdb的常见命令还有</p><ul><li>set命令，常见的是set architecture，设置使用intel还是AT&amp;T语法，更多可使用help set查看</li><li>bt (backtrace)：打印出回溯的所有栈</li><li>disas反汇编命令，直接disas是反汇编当前函数<ul><li>disas /r      (显示汇编指令对应十六进制值)</li><li>disas /m      (如果有源码，显示对应行源码)</li></ul></li><li>help命令，以上的命令都可以查到相关说明</li></ul><p>相关插件<br>peda:<a href="https://github.com/longld/peda" target="_blank" rel="noopener">https://github.com/longld/peda</a><br>libheap:<a href="https://github.com/cloudburst/libheap" target="_blank" rel="noopener">https://github.com/cloudburst/libheap</a><br>以上只是一下gdb常见命令，更多可用help命令去查看，目前只想到这些，以后在补充</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍&lt;/p&gt;
+&lt;h4 id=&quot;1、启动&quot;&gt;&lt;a href=&quot;#1、启动&quot; class=&quot;headerlink&quot; title=&quot;1、启动&quot;&gt;&lt;/a&gt;1、启动&lt;/h4&gt;&lt;pre&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="tools" scheme="https://life0sfc.github.io/categories/tools/"/>
+    
+    
+      <category term="gdb" scheme="https://life0sfc.github.io/tags/gdb/"/>
+    
+      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
     <title>逆向题--逆向找出正确的flagre2</title>
     <link href="https://life0sfc.github.io/2019/02/03/%E9%80%86%E5%90%91%E9%A2%98--%E9%80%86%E5%90%91%E6%89%BE%E5%87%BA%E6%AD%A3%E7%A1%AE%E7%9A%84flagre2/"/>
     <id>https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/</id>
@@ -116,9 +116,9 @@
       <category term="ctf" scheme="https://life0sfc.github.io/categories/ctf/"/>
     
     
-      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
-    
       <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
+    
+      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
     
   </entry>
   
