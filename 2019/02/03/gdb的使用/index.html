@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="gdb,ctf,">
 
 
 
@@ -81,13 +81,18 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="life0sfc">
-<meta property="og:url" content="https://life0sfc.github.io/tags/python/index.html">
+<meta name="description" content="gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍 1、启动start 2、断点b *地址 b 符号名    break &amp;lt;function&amp;gt; 在函数体入口处下断点。 3、单步si: step in 源码单步：next 4、查看内存x/[]i 对指定数量的指令进行反汇编 x/[]x 显示指定长度的数据   $rax   x/[]s以字">
+<meta name="keywords" content="gdb,ctf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="gdb的使用">
+<meta property="og:url" content="https://life0sfc.github.io/2019/02/03/gdb的使用/index.html">
 <meta property="og:site_name" content="life0sfc">
+<meta property="og:description" content="gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍 1、启动start 2、断点b *地址 b 符号名    break &amp;lt;function&amp;gt; 在函数体入口处下断点。 3、单步si: step in 源码单步：next 4、查看内存x/[]i 对指定数量的指令进行反汇编 x/[]x 显示指定长度的数据   $rax   x/[]s以字">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-14T03:55:51.971Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="life0sfc">
+<meta name="twitter:title" content="gdb的使用">
+<meta name="twitter:description" content="gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍 1、启动start 2、断点b *地址 b 符号名    break &amp;lt;function&amp;gt; 在函数体入口处下断点。 3、单步si: step in 源码单步：next 4、查看内存x/[]i 对指定数量的指令进行反汇编 x/[]x 显示指定长度的数据   $rax   x/[]s以字">
 
 
 
@@ -117,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://life0sfc.github.io/tags/python/">
+  <link rel="canonical" href="https://life0sfc.github.io/2019/02/03/gdb的使用/">
 
 
 
 
 
-  <title>Tag: python | life0sfc</title>
+  <title>gdb的使用 | life0sfc</title>
   
 
 
@@ -142,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
@@ -256,52 +261,254 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>python<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://life0sfc.github.io/2019/02/03/gdb的使用/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/head_icon.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="life0sfc">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2019/02/03/正则表达式/" itemprop="url">
-              
-                <span itemprop="name">正则表达式</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">gdb的使用</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-02-03T17:05:32+08:00" content="2019-02-03">
-          02-03
-        </time>
-      </div>
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-03T17:05:32+08:00">
+                2019-02-03
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
+                  <a href="/categories/tools/" itemprop="url" rel="index">
+                    <span itemprop="name">tools</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/02/03/gdb的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/03/gdb的使用/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2019/02/03/gdb的使用/" class="leancloud_visitors" data-flag-title="gdb的使用">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">Visitors&#58;</span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  315
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍</p>
+<h4 id="1、启动"><a href="#1、启动" class="headerlink" title="1、启动"></a>1、启动</h4><pre><code>start
+</code></pre><h4 id="2、断点"><a href="#2、断点" class="headerlink" title="2、断点"></a>2、断点</h4><pre><code>b *地址
+b 符号名    break &lt;function&gt; 在函数体入口处下断点。
+</code></pre><h4 id="3、单步"><a href="#3、单步" class="headerlink" title="3、单步"></a>3、单步</h4><pre><code>si: step in
+源码单步：next
+</code></pre><h4 id="4、查看内存"><a href="#4、查看内存" class="headerlink" title="4、查看内存"></a>4、查看内存</h4><pre><code>x/[]i 对指定数量的指令进行反汇编
+x/[]x 显示指定长度的数据   $rax  
+x/[]s以字符串形式显示数据
+</code></pre><p><code>x/10w $esp</code> 相当于显示栈上40B的数据，即栈上10个空间的数据</p>
+<p>除了以上常见的四点外，gdb的常见命令还有</p>
+<ul>
+<li>set命令，常见的是set architecture，设置使用intel还是AT&amp;T语法，更多可使用help set查看</li>
+<li>bt (backtrace)：打印出回溯的所有栈</li>
+<li>disas反汇编命令，直接disas是反汇编当前函数<ul>
+<li>disas /r      (显示汇编指令对应十六进制值)</li>
+<li>disas /m      (如果有源码，显示对应行源码)</li>
+</ul>
+</li>
+<li>help命令，以上的命令都可以查到相关说明</li>
+</ul>
+<p>相关插件<br>peda:<a href="https://github.com/longld/peda" target="_blank" rel="noopener">https://github.com/longld/peda</a><br>libheap:<a href="https://github.com/cloudburst/libheap" target="_blank" rel="noopener">https://github.com/cloudburst/libheap</a><br>以上只是一下gdb常见命令，更多可用help命令去查看，目前只想到这些，以后在补充</p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+      <div>
+        <ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>Post author:</strong>
+    
+  </li>
+  <li class="post-copyright-link">
+    <strong>Post link:</strong>
+    <a href="https://life0sfc.github.io/2019/02/03/gdb的使用/" title="gdb的使用">https://life0sfc.github.io/2019/02/03/gdb的使用/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>Copyright Notice: </strong>
+    All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/3.0/" rel="external nofollow" target="_blank">CC BY-NC-SA 3.0</a> unless stating additionally.
+  </li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/gdb/" rel="tag"># gdb</a>
+          
+            <a href="/tags/ctf/" rel="tag"># ctf</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/03/逆向题--逆向找出正确的flagre2/" rel="next" title="逆向题--逆向找出正确的flagre2">
+                <i class="fa fa-chevron-left"></i> 逆向题--逆向找出正确的flagre2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/03/abexcrackme#2/" rel="prev" title="abexcrackme#2">
+                abexcrackme#2 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -309,6 +516,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -329,8 +543,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -421,6 +644,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、启动"><span class="nav-text">1、启动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、断点"><span class="nav-text">2、断点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、单步"><span class="nav-text">3、单步</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4、查看内存"><span class="nav-text">4、查看内存</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -554,6 +793,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
