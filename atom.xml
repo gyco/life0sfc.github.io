@@ -6,10 +6,34 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://life0sfc.github.io/"/>
-  <updated>2019-02-04T15:41:34.560Z</updated>
+  <updated>2019-02-08T12:28:45.852Z</updated>
   <id>https://life0sfc.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>初入blockchain</title>
+    <link href="https://life0sfc.github.io/2019/02/08/%E5%88%9D%E5%85%A5blockchain/"/>
+    <id>https://life0sfc.github.io/2019/02/08/初入blockchain/</id>
+    <published>2019-02-08T12:26:19.000Z</published>
+    <updated>2019-02-08T12:28:45.852Z</updated>
+    
+    <content type="html"><![CDATA[<p>早就听说过区块链这个技术的威名，于是不知天高低后的想去申请做一个区块链的项目，但真正接触起来才发现，这对我来说是一个挑战，但既然当初不知天高低后的吹了出去，就只有努力填坑喽！写几遍blog记录我的所学，分享出来，共同进步！</p><h4 id="一、区块链"><a href="#一、区块链" class="headerlink" title="一、区块链"></a>一、区块链</h4><h5 id="1-1、去中心化应用-DApp"><a href="#1-1、去中心化应用-DApp" class="headerlink" title="1.1、去中心化应用(DApp)"></a>1.1、去中心化应用(DApp)</h5><p>它是一种网络应用，后端在去中心化的点对点网络上运行，且其源代码是开源的。不存在有完全能够控制DApp的节点。</p><ul><li>分布式应用：将应用分布在多个服务器上</li><li>账本–是一种只可增加的交易列表</li><li>区块链–创建去中心化账本的数据结构，用于储存数据</li></ul><p>bitcoin白皮书 <a href="https://bitcoin.org/en/bitcoin-paper" target="_blank" rel="noopener">https://bitcoin.org/en/bitcoin-paper</a></p><h5 id="1-2、几个常见的概念"><a href="#1-2、几个常见的概念" class="headerlink" title="1.2、几个常见的概念"></a>1.2、几个常见的概念</h5><ul><li>公有链、联盟链和私有链 <ul><li>公有链（Public Blockchain）：世界上所有人都可以发送交易，具有高度的去中心化，读写权限对所有人开放（如比特币）。</li><li>联盟链（Consortium Blockchain）：介于公有链和私有链直接，实现了“部分去中心化”，读写权限对加入联盟的节点开放。</li><li>私有链（Private Blockchain）：整个网络由某个组织完全控制，参与的节点具有严格的限制且少。</li></ul></li></ul><p>可以看出三种链的去中心化程度是由高到底的，公有链最高</p><ul><li>记账模式<ul><li>UTXO 是“unspent transaction input/output”的缩写，指“未花费的交易输入输出”，是区块链网络中的一种记账模式，主要应用在比特币系的数字货币中，它记录的是交易事件，而不是记录最终状态.</li><li>账户模式即账户余额模式，主要应用于智能合约中。</li></ul></li><li>区块链共识算法<ul><li>PoW:通过计算资源（又称算力）来决定记账权。</li><li>PoS:通过拥有又权力的大小来决定记账权。</li><li>DPoS:Delegated Proof of Stake 代理权益证明<h4 id="二、以太坊-ethereum"><a href="#二、以太坊-ethereum" class="headerlink" title="二、以太坊(ethereum)"></a>二、以太坊(ethereum)</h4><h5 id="2-1、什么是以太坊"><a href="#2-1、什么是以太坊" class="headerlink" title="2.1、什么是以太坊"></a>2.1、什么是以太坊</h5>是一个去中心化的平台，可以在其上运行使用智能合约编写的DApp</li></ul></li></ul><p>以太坊的白皮书：<a href="https://github.com/ethereum/wiki/wiki/White-Paper" target="_blank" rel="noopener">https://github.com/ethereum/wiki/wiki/White-Paper</a></p><p>以太坊虚拟机（EVM）可执行任意复杂算法的编码，使以太坊是“图灵完备的”</p><h5 id="2-2、以太坊的几个基本概念"><a href="#2-2、以太坊的几个基本概念" class="headerlink" title="2.2、以太坊的几个基本概念"></a>2.2、以太坊的几个基本概念</h5><ul><li>账户：每个账户都有一对密钥来定义，账户以地址为索引，地址为公钥的后20个字节<ul><li>外部账户（EOA,externally owned accounts）:由私人密钥控制，具有以太币的状态（即人用的账户）</li><li>合约账户(CA,contracts accounts)：由合约代码控制（即智能合约用的账户），且只能由外部账户激活</li></ul></li><li>交易： EOA 账户将一个经过签名的数据包发送到另外一个账户的过程，这个过程产生的账户状态变化将被存储到以太坊区块链上。</li><li>消息：一个合约账户调用其他合约账户的过程。</li><li>EVM:以太坊虚拟机，用来执行以太坊智能合约字节码（类似于java的jvm）</li><li>gas:是执行智能合约操作的燃料，智能合约的每一个步骤都会消耗 gas,gas是由以太坊的平台代币以太币转化而来</li></ul><h5 id="2-3、搭建以太坊开发环境"><a href="#2-3、搭建以太坊开发环境" class="headerlink" title="2.3、搭建以太坊开发环境"></a>2.3、搭建以太坊开发环境</h5><p>geth(go-ethereum)为以太坊的go语言客户端,geth官方安装指南：</p><blockquote><p><a href="https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum" target="_blank" rel="noopener">https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum</a></p></blockquote><p>创建一个账户</p><pre><code>geth account new  //会让你输入pw,由于账户没有找回密码的选项，请务必记住密码或者使用geth --password ./password account newgeth account list   //列出keystore文件夹中所有账号</code></pre><p>密钥文件在：~/.ethereum/keystore/中<br>Geth Console一个交互式的 JavaScript 执行环境</p><pre><code>geth console 2&gt;&gt; file_to_log_output  //进入交互式并输出日志&gt; eth.accounts   //列出账号[&quot;0x87c9207d37e9cc2ee8bae158ea922b131f5f6edb&quot;]&gt;personal.newAccount(&quot;password&quot;)tail -f file_to_log_output //查看日志</code></pre><ul><li>eth：包含一些跟操作区块链相关的方法</li><li>net：包含以下查看p2p网络状态的方法</li><li>admin：包含一些与管理节点相关的方法</li><li>miner：包含启动&amp;停止挖矿的一些方法</li><li>personal：主要包含一些管理账户的方法</li><li>txpool：包含一些查看交易内存池的方法</li><li>web3：包含了以上对象，还包含一些单位换算的方法</li></ul><blockquote><p><a href="https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts" target="_blank" rel="noopener">https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts</a></p></blockquote><p>Mist浏览器(已经集成以太坊钱包)</p><blockquote><p><a href="https://github.com/ethereum/mist/releases/" target="_blank" rel="noopener">https://github.com/ethereum/mist/releases/</a></p></blockquote><p>以太坊网络<br><a href="https://ethstats.net/" target="_blank" rel="noopener">https://ethstats.net/</a><br>中显示了以太坊网络中实时的数据</p><pre><code>&gt; net.listening  //显示是否在监听的节点true&gt; net.peerCount  //对等端点的数量0&gt; admin.peers  //返回已连接的对等端点的列表&gt; admin.nodeInfo</code></pre><h5 id="2-4、编写智能合约"><a href="#2-4、编写智能合约" class="headerlink" title="2.4、编写智能合约"></a>2.4、编写智能合约</h5><p>通过编写智能合约，我们可以让以太坊网络执行我们所设定的内容，我将采用<code>solidity</code>这门语言来编写合约代码（这门语言与<code>javascript</code>很像），当然<code>EVM</code>其实支持多种语言，不过主流是<code>solidity</code>，编写出来的文件是以<code>.sol</code>为后缀的，编写完成后编译成为字节码供<code>EVM</code>执行</p><p>solidity官方文档：<a href="https://solidity.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://solidity.readthedocs.io/en/latest/</a></p><p>安装<code>solidity</code>编译器<br>官网中提供了多种安装方法，这里采用二进制包来安装</p><pre><code>sudo add-apt-repository ppa:ethereum/ethereumsudo apt-get updatesudo apt-get install solc</code></pre><p>安装成功后，输入<code>solc --help</code>可查看相应的选项<br>除了这种方法外，常见的是使用以太坊提供的<code>Browser Solidity</code>一种在浏览器上的适用于小型合约的IDE，<code>solidity</code>官方文档中推荐使用<code>Remix</code></p><blockquote><p><a href="https://github.com/ethereum/remix-ide/" target="_blank" rel="noopener">https://github.com/ethereum/remix-ide/</a></p></blockquote><p><code>Remix</code>提供两种方式</p><ul><li>直接通过浏览器访问<a href="https://ethereum.github.io/browser-solidity/进行在线编写" target="_blank" rel="noopener">https://ethereum.github.io/browser-solidity/进行在线编写</a></li><li>本地安装</li></ul><p>首先要安装<code>npm</code>和<code>nodejs</code></p><pre><code>sudo apt-get install npmnpm install -g npm   //用于更新npmcurl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash //下载并安装nvm用于安装nodejsnvm install nodenode -v</code></pre><p>nvm为nodejs的包管理器，Node.js 就是运行在服务端的<code>JavaScript</code>。</p><p>安装remix</p><pre><code>npm install remix-ide -gremix-ide</code></pre><p><img src="https://i.imgur.com/oXkvZvv.png" alt=""></p><p>浏览器打开<a href="http://127.0.0.1:8080，就可以开始编程了" target="_blank" rel="noopener">http://127.0.0.1:8080，就可以开始编程了</a></p><h5 id="区块链资源"><a href="#区块链资源" class="headerlink" title="区块链资源"></a>区块链资源</h5><blockquote><p><a href="https://mp.weixin.qq.com/s/1ZBdZfpYwqpe_Xbj0t3WOw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/1ZBdZfpYwqpe_Xbj0t3WOw</a></p></blockquote><blockquote><p><a href="https://ethfans.org/" target="_blank" rel="noopener">https://ethfans.org/</a></p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;早就听说过区块链这个技术的威名，于是不知天高低后的想去申请做一个区块链的项目，但真正接触起来才发现，这对我来说是一个挑战，但既然当初不知天高低后的吹了出去，就只有努力填坑喽！写几遍blog记录我的所学，分享出来，共同进步！&lt;/p&gt;
+&lt;h4 id=&quot;一、区块链&quot;&gt;&lt;a hre
+      
+    
+    </summary>
+    
+    
+      <category term="blockchain" scheme="https://life0sfc.github.io/tags/blockchain/"/>
+    
+  </entry>
   
   <entry>
     <title>正则表达式</title>
@@ -36,34 +60,6 @@
       <category term="正则表达式" scheme="https://life0sfc.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
     
       <category term="python" scheme="https://life0sfc.github.io/tags/python/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>abexcrackme#2</title>
-    <link href="https://life0sfc.github.io/2019/02/03/abexcrackme#2/"/>
-    <id>https://life0sfc.github.io/2019/02/03/abexcrackme#2/</id>
-    <published>2019-02-03T09:05:32.163Z</published>
-    <updated>2018-10-14T03:55:51.970Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>实验环境：win xp32位虚拟机</li><li>程序：abexcrackme#2</li><li>实验工具：od<h4 id="破解程序"><a href="#破解程序" class="headerlink" title="破解程序"></a>破解程序</h4></li></ul><p>首先我们先观察一下程序的特征</p><p><img src="https://i.imgur.com/56MoLwG.png" alt=""></p><p>需要输入Name 和 Serial，检验后弹出正确的窗口<br>测试一下</p><p><img src="https://i.imgur.com/sP9pljo.png" alt=""></p><p>使用peid查看发现是VB程序，<br>用od打开</p><p><img src="https://i.imgur.com/rgn6rDv.png" alt=""></p><p>右键–&gt;Search for–&gt;All referenced text strings查看所有字符串<br>找到</p><p><img src="https://i.imgur.com/MgmnP1B.png" alt=""></p><p>进入字符串Congratulation!发现</p><p><img src="https://i.imgur.com/KhZJ3OX.png" alt=""><br>先是移动相关的字符串，然后调用消息框的代码04033BE</p><p>向上观察发现汇编代码中先压入了edx,eax然后call调用了函数，再执行test和je指令<br><img src="https://i.imgur.com/OhHyBDQ.png" alt=""><br>在32位的程序中函数调用时会将参数压入栈中，所以判断call调用的函数是判断字符串是否相等，可以在403321处下断点（F2）在重新开始程序（ctrl+f2），按F9运行程序，观察程序的运行，输入Name,Serial，这里设为123456，abcsdf，程序停在了403321处</p><p>在403329处下断点，按F9继续运行，查看edx,eax值</p><p><img src="https://i.imgur.com/hWQQCbe.png" alt=""></p><p>查看0012F4D4，0012F4C4存储在栈中的内存地址（选定地址–&gt;右键–&gt;Follow in dump）</p><p><img src="https://i.imgur.com/Qq85WlR.png" alt=""><br>此16个字节不是直接显示的字符串，可以使用在dump窗口long-&gt;Address with ASCII dump命令查看</p><p><img src="https://i.imgur.com/pTDoPqn.png" alt=""> </p><p>查看0012F4D4，0012F4C4在栈窗口中的值（Follow in stack）</p><p><img src="https://i.imgur.com/jYTS9Re.png" alt=""></p><p>可以发现eax为用户输入的Serial（VB使用unicode编码），而edx为实际的Serial值</p><p><img src="https://i.imgur.com/ZjjQvEc.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;实验环境：win xp32位虚拟机&lt;/li&gt;
-&lt;li&gt;程序：abexcrackme#2&lt;/li&gt;
-&lt;li&gt;实验工具：od&lt;h4 id=&quot;破解程序&quot;&gt;&lt;a href=&quot;#破解程序&quot; class=&quot;headerlink&quot; title=&quot;破解程序&quot;&gt;&lt;/a&gt;破解程序&lt;
-      
-    
-    </summary>
-    
-      <category term="reverse" scheme="https://life0sfc.github.io/categories/reverse/"/>
-    
-    
-      <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
     
   </entry>
   
@@ -96,6 +92,34 @@
   </entry>
   
   <entry>
+    <title>abexcrackme#2</title>
+    <link href="https://life0sfc.github.io/2019/02/03/abexcrackme#2/"/>
+    <id>https://life0sfc.github.io/2019/02/03/abexcrackme#2/</id>
+    <published>2019-02-03T09:05:32.163Z</published>
+    <updated>2018-10-14T03:55:51.970Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>实验环境：win xp32位虚拟机</li><li>程序：abexcrackme#2</li><li>实验工具：od<h4 id="破解程序"><a href="#破解程序" class="headerlink" title="破解程序"></a>破解程序</h4></li></ul><p>首先我们先观察一下程序的特征</p><p><img src="https://i.imgur.com/56MoLwG.png" alt=""></p><p>需要输入Name 和 Serial，检验后弹出正确的窗口<br>测试一下</p><p><img src="https://i.imgur.com/sP9pljo.png" alt=""></p><p>使用peid查看发现是VB程序，<br>用od打开</p><p><img src="https://i.imgur.com/rgn6rDv.png" alt=""></p><p>右键–&gt;Search for–&gt;All referenced text strings查看所有字符串<br>找到</p><p><img src="https://i.imgur.com/MgmnP1B.png" alt=""></p><p>进入字符串Congratulation!发现</p><p><img src="https://i.imgur.com/KhZJ3OX.png" alt=""><br>先是移动相关的字符串，然后调用消息框的代码04033BE</p><p>向上观察发现汇编代码中先压入了edx,eax然后call调用了函数，再执行test和je指令<br><img src="https://i.imgur.com/OhHyBDQ.png" alt=""><br>在32位的程序中函数调用时会将参数压入栈中，所以判断call调用的函数是判断字符串是否相等，可以在403321处下断点（F2）在重新开始程序（ctrl+f2），按F9运行程序，观察程序的运行，输入Name,Serial，这里设为123456，abcsdf，程序停在了403321处</p><p>在403329处下断点，按F9继续运行，查看edx,eax值</p><p><img src="https://i.imgur.com/hWQQCbe.png" alt=""></p><p>查看0012F4D4，0012F4C4存储在栈中的内存地址（选定地址–&gt;右键–&gt;Follow in dump）</p><p><img src="https://i.imgur.com/Qq85WlR.png" alt=""><br>此16个字节不是直接显示的字符串，可以使用在dump窗口long-&gt;Address with ASCII dump命令查看</p><p><img src="https://i.imgur.com/pTDoPqn.png" alt=""> </p><p>查看0012F4D4，0012F4C4在栈窗口中的值（Follow in stack）</p><p><img src="https://i.imgur.com/jYTS9Re.png" alt=""></p><p>可以发现eax为用户输入的Serial（VB使用unicode编码），而edx为实际的Serial值</p><p><img src="https://i.imgur.com/ZjjQvEc.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;实验环境：win xp32位虚拟机&lt;/li&gt;
+&lt;li&gt;程序：abexcrackme#2&lt;/li&gt;
+&lt;li&gt;实验工具：od&lt;h4 id=&quot;破解程序&quot;&gt;&lt;a href=&quot;#破解程序&quot; class=&quot;headerlink&quot; title=&quot;破解程序&quot;&gt;&lt;/a&gt;破解程序&lt;
+      
+    
+    </summary>
+    
+      <category term="reverse" scheme="https://life0sfc.github.io/categories/reverse/"/>
+    
+    
+      <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
+    
+  </entry>
+  
+  <entry>
     <title>逆向题--逆向找出正确的flagre2</title>
     <link href="https://life0sfc.github.io/2019/02/03/%E9%80%86%E5%90%91%E9%A2%98--%E9%80%86%E5%90%91%E6%89%BE%E5%87%BA%E6%AD%A3%E7%A1%AE%E7%9A%84flagre2/"/>
     <id>https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/</id>
@@ -116,9 +140,9 @@
       <category term="ctf" scheme="https://life0sfc.github.io/categories/ctf/"/>
     
     
-      <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
-    
       <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
+    
+      <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
     
   </entry>
   
@@ -127,9 +151,9 @@
     <link href="https://life0sfc.github.io/2019/02/03/%E6%90%AD%E5%BB%BA%E4%B8%80%E4%B8%AAblog/"/>
     <id>https://life0sfc.github.io/2019/02/03/搭建一个blog/</id>
     <published>2019-02-03T08:56:47.001Z</published>
-    <updated>2019-02-04T15:48:19.221Z</updated>
+    <updated>2019-02-08T12:24:18.576Z</updated>
     
-    <content type="html"><![CDATA[<p>我是在windows下使用hexo来搭建blog的，hexo是一款简单、快速的博客框架，可以用来写<code>markdown</code>文件的博客</p><h4 id="一、安装git和nodejs"><a href="#一、安装git和nodejs" class="headerlink" title="一、安装git和nodejs"></a>一、安装git和nodejs</h4><p>git是一种分布式版本控制系统，我们搭建的<code>blog</code>要用到github，使用<br><code>username.github.io</code>为域名。<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a> 选择合适的版本下载并安装，安装完成后，右键会有关于git的两个按键</p><p>nodejs是运行在服务端的<code>JavaScript</code>,<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">下载地址</a>选择合适的版本下载并安装</p><h4 id="二、安装hexo"><a href="#二、安装hexo" class="headerlink" title="二、安装hexo"></a>二、安装hexo</h4><p>在你合适的地方新建一个<code>hexo</code>文件夹用于安装hexo，这里我选择在E盘下，在hexo文件夹中，打开git的命令行</p><pre><code>npm install -g hexo-cli    #-g 表示全局安装hexo init                  #初始化hexo install               #安装依赖</code></pre><p>本地测试</p><pre><code>hexo g   //生成文件,和更新类似hexo s  //本地启动，可在http://localhost:4000/本地访问博客</code></pre><p>在生成以及部署文章之前，需要安装一个扩展：<code>npm install hexo-deployer-git --save</code></p><p><img src="https://i.imgur.com/HeIJKGb.png" alt=""></p><ul><li><code>themes</code>文件夹稍后可以安装适合自己的主题</li><li><p><code>_config.yml</code>在文件中可修改配置文件<br><img src="https://i.imgur.com/LiYPDoY.png" alt=""></p></li><li><p><code>_post</code>文件夹中添加你写的md格式的博客</p></li></ul><h4 id="三、生成SSH并添加到github"><a href="#三、生成SSH并添加到github" class="headerlink" title="三、生成SSH并添加到github"></a>三、生成SSH并添加到github</h4><p>先在Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io。并且需要勾选Initialize this repository with a README<br><img src="https://i.imgur.com/TocS67e.png" alt=""><br>现在我们可以发现可以访问https://{username}.github.io/了<br>对本地的<code>hexo博客根目录\_config.yml</code>进行修改，添加如下内容</p><pre><code>deploy:   type: git  repository: https://github.com/life0sfc/life0sfc.github.io.git  branch: master</code></pre><p>将Hexo与Github page联系起来，设置Git的username和email</p><pre><code>$ git config --global user.name &quot;your name&quot;  $ git config --global user.email &quot;your_email@youremail.com&quot;</code></pre><p>创建ssh密钥</p><pre><code>ssh-keygen -t rsa -C “your_email@youremail.com”</code></pre><p>会在~/.ssh文件夹中产生密钥文件<br><img src="https://i.imgur.com/Gg6thGN.png" alt=""></p><p>登录Github，点击头像下的settings，添加ssh，id_rsa.pub文件里的内容复制上去<br><img src="https://i.imgur.com/Y3DgM7M.png" alt=""><br>输入<code>ssh -T git@github.com</code>，测试添加ssh是否成功<br><img src="https://i.imgur.com/A6WxNeZ.png" alt=""><br>可以看到已经成功了</p><p>在Hexo博客根目录<br><img src="https://i.imgur.com/VUDRrdJ.png" alt=""><br>上传到github上<br><img src="https://i.imgur.com/wsSkS5p.png" alt=""></p><h4 id="四、优化你的博客"><a href="#四、优化你的博客" class="headerlink" title="四、优化你的博客"></a>四、优化你的博客</h4><h5 id="4-1-更改博客主题"><a href="#4-1-更改博客主题" class="headerlink" title="4.1 更改博客主题"></a>4.1 更改博客主题</h5><pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre><p>在<code>_config.yml</code>(这是在Hexo博客根目录下的文件)中将<code>theme: landscape</code>改成<code>theme: next</code></p><h5 id="4-2-添加RSS"><a href="#4-2-添加RSS" class="headerlink" title="4.2 添加RSS"></a>4.2 添加RSS</h5><p>在hexo根目录打开git bash，安装插件：</p><pre><code>npm install --save hexo-generator-feed</code></pre><p>修改<code>hexo博客根目录\_config.yml</code>文件，添加</p><pre><code>feed: # RSS订阅插件  type: atom  path: atom.xml  limit: 0plugins: hexo-generate-feed</code></pre><p>修改<code>hexo博客根目录\themes\next\_config.yml</code>（这是主题配置文件）文件，添加</p><pre><code>rss: /atom.xml</code></pre><h5 id="4-3-将博客地址加入搜索引擎"><a href="#4-3-将博客地址加入搜索引擎" class="headerlink" title="4.3 将博客地址加入搜索引擎"></a>4.3 将博客地址加入搜索引擎</h5><p>虽然我们将自己的博客托管到了github上，但是github是不会将站点信息提交给搜索引擎的（即使用搜索引擎是搜不到我们的博客的），所以我们必须手动将自己的博客站点提交给谷歌、百度的搜索引擎。</p><ul><li>验证站点<br>打开<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="noopener">谷歌搜索引擎验证</a>（需要翻墙），点击添加网站，输入自己的博客 地址，选择HTML标记验证</li></ul><p><img src="https://i.imgur.com/3055jwd.png" alt=""></p><p>打开本地博客主题下的<code>layout/_partial</code>文件夹，有一个名为<code>head.swig</code>的文件，使用编辑器打开，将刚才复制的两句 meta 代码粘贴进去<br>保存文件后，输入以下命令将博客重新部署到 GitHub服务器中。</p><pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre><p>完成验证<br><img src="https://i.imgur.com/tWn7tce.png" alt=""></p><ul><li>生成站点地图</li></ul><blockquote><p>站点地图可方便网站管理员通知搜索引擎他们网站上有哪些可供抓取的网页。最简单的 Sitemap 形式，就是XML文件，在其中列出网站中的网址以及关于每个网址的其他元数据（上次更新的时间、更改的频率以及相对于网站上其他网址的重要程度为何等），以便搜索引擎可以更加智能地抓取网站。                                         —百度百科</p></blockquote><p>在hexo根目录打开git bash，安装插件：</p><pre><code>npm install hexo-generator-sitemap --savenpm install hexo-generator-baidu-sitemap --save</code></pre><p>打开hexo目录下的<code>_config.yml</code>文件，修改<code>url</code>参数为博客的首页地址，这样是为了保证能正确生成<code>sitemap.xml</code>文件中的地址。<br>添加以下配置</p><pre><code>sitemap:           //自动生成sitemap.xml  path: sitemap.xmlbaidusitemap:   path: baidusitemap.xml</code></pre><p>其中sitemap.xml适合提交给谷歌搜素引擎，baidusitemap.xml适合提交百度搜索引擎，重新部署博客。</p><p>在<a href="https://search.google.com/search-console/sitemaps" target="_blank" rel="noopener">谷歌站点控制台</a>，提交站点地图<br><img src="https://i.imgur.com/MbrpqQB.png" alt=""><br>完成</p><h5 id="4-4-杂"><a href="#4-4-杂" class="headerlink" title="4.4 杂"></a>4.4 杂</h5><ul><li><p><a href="https://notes.doublemine.me/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener">统计阅读次数</a></p></li><li><p>添加评论区</p></li></ul><p>添加Valine评论系统<br>在主题配置文件中，修改以下处代码</p><pre><code>valine:  enable: true         #是否启用  appid:             #Leancloud中的appid  appkey:             #Leancloud中的appkey  notify: false     #收到回复是否Email通知  verify: false     #回复验证码  placeholder:       #评论框欢迎语  avatar: mm         #gravatar 头像默认风格  guest_info: nick,email,link     #需填写的信息  pageSize: 10         #评论页面大小</code></pre><ul><li><p>添加菜单选项</p><p>  hexo new page “categories”   // 添加分类页面<br>  hexo new page “tags”    // 添加标签页面<br>  hexo new page “about”     // 添加关于页面</p></li></ul><p><img src="https://i.imgur.com/8bB7JNv.png" alt=""></p><p>新建一篇博客，在cmd执行命令：hexo new post “博客名”</p><p>参考链接</p><blockquote><p><a href="https://zhuanlan.zhihu.com/p/33616481" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33616481</a></p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p>我是在windows下使用hexo来搭建blog的，hexo是一款简单、快速的博客框架，可以用来写<code>markdown</code>文件的博客</p><h4 id="一、安装git和nodejs"><a href="#一、安装git和nodejs" class="headerlink" title="一、安装git和nodejs"></a>一、安装git和nodejs</h4><p>git是一种分布式版本控制系统，我们搭建的<code>blog</code>要用到github，使用<br><code>username.github.io</code>为域名。<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a> 选择合适的版本下载并安装，安装完成后，右键会有关于git的两个按键</p><p>nodejs是运行在服务端的<code>JavaScript</code>,<a href="https://nodejs.org/en/download/" target="_blank" rel="noopener">下载地址</a>选择合适的版本下载并安装</p><h4 id="二、安装hexo"><a href="#二、安装hexo" class="headerlink" title="二、安装hexo"></a>二、安装hexo</h4><p>在你合适的地方新建一个<code>hexo</code>文件夹用于安装hexo，这里我选择在E盘下，在hexo文件夹中，打开git的命令行</p><pre><code>npm install -g hexo-cli    #-g 表示全局安装hexo init                  #初始化hexo install               #安装依赖</code></pre><p>本地测试</p><pre><code>hexo g   //生成文件,和更新类似hexo s  //本地启动，可在http://localhost:4000/本地访问博客</code></pre><p>在生成以及部署文章之前，需要安装一个扩展：<code>npm install hexo-deployer-git --save</code></p><p><img src="https://i.imgur.com/HeIJKGb.png" alt=""></p><ul><li><code>themes</code>文件夹稍后可以安装适合自己的主题</li><li><p><code>_config.yml</code>在文件中可修改配置文件<br><img src="https://i.imgur.com/LiYPDoY.png" alt=""></p></li><li><p><code>_post</code>文件夹中添加你写的md格式的博客</p></li></ul><h4 id="三、生成SSH并添加到github"><a href="#三、生成SSH并添加到github" class="headerlink" title="三、生成SSH并添加到github"></a>三、生成SSH并添加到github</h4><p>先在Github账户注册和新建项目，项目必须要遵守格式：账户名.github.io。并且需要勾选Initialize this repository with a README<br><img src="https://i.imgur.com/TocS67e.png" alt=""><br>现在我们可以发现可以访问https://{username}.github.io/了<br>对本地的<code>hexo博客根目录\_config.yml</code>进行修改，添加如下内容</p><pre><code>deploy:   type: git  repository: https://github.com/life0sfc/life0sfc.github.io.git  branch: master</code></pre><p>将Hexo与Github page联系起来，设置Git的username和email</p><pre><code>$ git config --global user.name &quot;your name&quot;  $ git config --global user.email &quot;your_email@youremail.com&quot;</code></pre><p>创建ssh密钥</p><pre><code>ssh-keygen -t rsa -C “your_email@youremail.com”</code></pre><p>会在~/.ssh文件夹中产生密钥文件<br><img src="https://i.imgur.com/Gg6thGN.png" alt=""></p><p>登录Github，点击头像下的settings，添加ssh，id_rsa.pub文件里的内容复制上去<br><img src="https://i.imgur.com/Y3DgM7M.png" alt=""><br>输入<code>ssh -T git@github.com</code>，测试添加ssh是否成功<br><img src="https://i.imgur.com/A6WxNeZ.png" alt=""><br>可以看到已经成功了</p><p>在Hexo博客根目录<br><img src="https://i.imgur.com/VUDRrdJ.png" alt=""><br>上传到github上<br><img src="https://i.imgur.com/wsSkS5p.png" alt=""></p><h4 id="四、优化你的博客"><a href="#四、优化你的博客" class="headerlink" title="四、优化你的博客"></a>四、优化你的博客</h4><h5 id="4-1-更改博客主题"><a href="#4-1-更改博客主题" class="headerlink" title="4.1 更改博客主题"></a>4.1 更改博客主题</h5><pre><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></pre><p>在<code>_config.yml</code>(这是在Hexo博客根目录下的文件)中将<code>theme: landscape</code>改成<code>theme: next</code></p><h5 id="4-2-添加RSS"><a href="#4-2-添加RSS" class="headerlink" title="4.2 添加RSS"></a>4.2 添加RSS</h5><p>在hexo根目录打开git bash，安装插件：</p><pre><code>npm install --save hexo-generator-feed</code></pre><p>修改<code>hexo博客根目录\_config.yml</code>文件，添加</p><pre><code>feed: # RSS订阅插件  type: atom  path: atom.xml  limit: 0plugins: hexo-generate-feed</code></pre><p>修改<code>hexo博客根目录\themes\next\_config.yml</code>（这是主题配置文件）文件，添加</p><pre><code>rss: /atom.xml</code></pre><h5 id="4-3-将博客地址加入搜索引擎"><a href="#4-3-将博客地址加入搜索引擎" class="headerlink" title="4.3 将博客地址加入搜索引擎"></a>4.3 将博客地址加入搜索引擎</h5><p>虽然我们将自己的博客托管到了github上，但是github是不会将站点信息提交给搜索引擎的（即使用搜索引擎是搜不到我们的博客的），所以我们必须手动将自己的博客站点提交给谷歌、百度的搜索引擎。</p><ul><li>验证站点<br>打开<a href="https://www.google.com/webmasters/tools/home?hl=zh-CN" target="_blank" rel="noopener">谷歌搜索引擎验证</a>（需要翻墙），点击添加网站，输入自己的博客 地址，选择HTML标记验证</li></ul><p><img src="https://i.imgur.com/3055jwd.png" alt=""></p><p>打开本地博客主题下的<code>layout/_partial</code>文件夹，有一个名为<code>head.swig</code>的文件，使用编辑器打开，将刚才复制的两句 meta 代码粘贴进去<br>保存文件后，输入以下命令将博客重新部署到 GitHub服务器中。</p><pre><code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo d</code></pre><p>完成验证<br><img src="https://i.imgur.com/tWn7tce.png" alt=""></p><ul><li>生成站点地图</li></ul><blockquote><p>站点地图可方便网站管理员通知搜索引擎他们网站上有哪些可供抓取的网页。最简单的 Sitemap 形式，就是XML文件，在其中列出网站中的网址以及关于每个网址的其他元数据（上次更新的时间、更改的频率以及相对于网站上其他网址的重要程度为何等），以便搜索引擎可以更加智能地抓取网站。                                         —百度百科</p></blockquote><p>在hexo根目录打开git bash，安装插件：</p><pre><code>npm install hexo-generator-sitemap --savenpm install hexo-generator-baidu-sitemap --save</code></pre><p>打开hexo目录下的<code>_config.yml</code>文件，修改<code>url</code>参数为博客的首页地址，这样是为了保证能正确生成<code>sitemap.xml</code>文件中的地址。<br>添加以下配置</p><pre><code>sitemap:           //自动生成sitemap.xml  path: sitemap.xmlbaidusitemap:   path: baidusitemap.xml</code></pre><p>其中sitemap.xml适合提交给谷歌搜素引擎，baidusitemap.xml适合提交百度搜索引擎，重新部署博客。</p><p>在<a href="https://search.google.com/search-console/sitemaps" target="_blank" rel="noopener">谷歌站点控制台</a>，提交站点地图<br><img src="https://i.imgur.com/MbrpqQB.png" alt=""><br>完成</p><h5 id="4-4-杂"><a href="#4-4-杂" class="headerlink" title="4.4 杂"></a>4.4 杂</h5><ul><li><p><a href="https://notes.doublemine.me/2015-10-21-%E4%B8%BANexT%E4%B8%BB%E9%A2%98%E6%B7%BB%E5%8A%A0%E6%96%87%E7%AB%A0%E9%98%85%E8%AF%BB%E9%87%8F%E7%BB%9F%E8%AE%A1%E5%8A%9F%E8%83%BD.html#%E9%85%8D%E7%BD%AELeanCloud" target="_blank" rel="noopener">统计阅读次数</a></p></li><li><p>添加评论区</p></li></ul><p>添加Valine评论系统<br>在主题配置文件中，修改以下处代码</p><pre><code>valine:  enable: true         #是否启用  appid:             #Leancloud中的appid  appkey:             #Leancloud中的appkey  notify: false     #收到回复是否Email通知  verify: false     #回复验证码  placeholder:       #评论框欢迎语  avatar: mm         #gravatar 头像默认风格  guest_info: nick,email,link     #需填写的信息  pageSize: 10         #评论页面大小</code></pre><ul><li><p>添加菜单选项</p><p>  hexo new page “categories”   // 添加分类页面<br>  hexo new page “tags”// 添加标签页面<br>  hexo new page “about” // 添加关于页面</p></li></ul><p><img src="https://i.imgur.com/8bB7JNv.png" alt=""></p><p>新建一篇博客，在cmd执行命令：hexo new post “博客名”</p><p>参考链接</p><blockquote><p><a href="https://zhuanlan.zhihu.com/p/33616481" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33616481</a></p></blockquote>]]></content>
     
     <summary type="html">
     
