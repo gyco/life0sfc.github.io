@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://life0sfc.github.io/"/>
-  <updated>2019-02-08T12:32:54.143Z</updated>
+  <updated>2019-02-08T12:35:27.848Z</updated>
   <id>https://life0sfc.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
@@ -16,9 +16,9 @@
     <link href="https://life0sfc.github.io/2019/02/08/%E5%88%9D%E5%85%A5blockchain/"/>
     <id>https://life0sfc.github.io/2019/02/08/初入blockchain/</id>
     <published>2019-02-08T12:26:19.000Z</published>
-    <updated>2019-02-08T12:32:54.143Z</updated>
+    <updated>2019-02-08T12:35:27.848Z</updated>
     
-    <content type="html"><![CDATA[<p>早就听说过区块链这个技术的威名，于是不知天高低后的想去申请做一个区块链的项目，但真正接触起来才发现，这对我来说是一个挑战，但既然当初不知天高低后的吹了出去，就只有努力填坑喽！写几遍blog记录我的所学，分享出来，共同进步！</p><h4 id="一、区块链"><a href="#一、区块链" class="headerlink" title="一、区块链"></a>一、区块链</h4><h5 id="1-1、去中心化应用-DApp"><a href="#1-1、去中心化应用-DApp" class="headerlink" title="1.1、去中心化应用(DApp)"></a>1.1、去中心化应用(DApp)</h5><p>它是一种网络应用，后端在去中心化的点对点网络上运行，且其源代码是开源的。不存在有完全能够控制DApp的节点。</p><ul><li>分布式应用：将应用分布在多个服务器上</li><li>账本–是一种只可增加的交易列表</li><li>区块链–创建去中心化账本的数据结构，用于储存数据</li></ul><p>bitcoin白皮书 <a href="https://bitcoin.org/en/bitcoin-paper" target="_blank" rel="noopener">https://bitcoin.org/en/bitcoin-paper</a></p><h5 id="1-2、几个常见的概念"><a href="#1-2、几个常见的概念" class="headerlink" title="1.2、几个常见的概念"></a>1.2、几个常见的概念</h5><ul><li>公有链、联盟链和私有链 <ul><li>公有链（Public Blockchain）：世界上所有人都可以发送交易，具有高度的去中心化，读写权限对所有人开放（如比特币）。</li><li>联盟链（Consortium Blockchain）：介于公有链和私有链直接，实现了“部分去中心化”，读写权限对加入联盟的节点开放。</li><li>私有链（Private Blockchain）：整个网络由某个组织完全控制，参与的节点具有严格的限制且少。</li></ul></li></ul><p>可以看出三种链的去中心化程度是由高到底的，公有链最高</p><ul><li>记账模式<ul><li>UTXO 是“unspent transaction input/output”的缩写，指“未花费的交易输入输出”，是区块链网络中的一种记账模式，主要应用在比特币系的数字货币中，它记录的是交易事件，而不是记录最终状态.</li><li>账户模式即账户余额模式，主要应用于智能合约中。</li></ul></li><li>区块链共识算法<ul><li>PoW:通过计算资源（又称算力）来决定记账权。</li><li>PoS:通过拥有又权力的大小来决定记账权。</li><li>DPoS:Delegated Proof of Stake 代理权益证明<h4 id="二、以太坊-ethereum"><a href="#二、以太坊-ethereum" class="headerlink" title="二、以太坊(ethereum)"></a>二、以太坊(ethereum)</h4><h5 id="2-1、什么是以太坊"><a href="#2-1、什么是以太坊" class="headerlink" title="2.1、什么是以太坊"></a>2.1、什么是以太坊</h5>是一个去中心化的平台，可以在其上运行使用智能合约编写的DApp</li></ul></li></ul><p>以太坊的白皮书：<a href="https://github.com/ethereum/wiki/wiki/White-Paper" target="_blank" rel="noopener">https://github.com/ethereum/wiki/wiki/White-Paper</a></p><p>以太坊虚拟机（EVM）可执行任意复杂算法的编码，使以太坊是“图灵完备的”</p><h5 id="2-2、以太坊的几个基本概念"><a href="#2-2、以太坊的几个基本概念" class="headerlink" title="2.2、以太坊的几个基本概念"></a>2.2、以太坊的几个基本概念</h5><ul><li>账户：每个账户都有一对密钥来定义，账户以地址为索引，地址为公钥的后20个字节<ul><li>外部账户（EOA,externally owned accounts）:由私人密钥控制，具有以太币的状态（即人用的账户）</li><li>合约账户(CA,contracts accounts)：由合约代码控制（即智能合约用的账户），且只能由外部账户激活</li></ul></li><li>交易： EOA 账户将一个经过签名的数据包发送到另外一个账户的过程，这个过程产生的账户状态变化将被存储到以太坊区块链上。</li><li>消息：一个合约账户调用其他合约账户的过程。</li><li>EVM:以太坊虚拟机，用来执行以太坊智能合约字节码（类似于java的jvm）</li><li>gas:是执行智能合约操作的燃料，智能合约的每一个步骤都会消耗 gas,gas是由以太坊的平台代币以太币转化而来</li></ul><h5 id="2-3、搭建以太坊开发环境"><a href="#2-3、搭建以太坊开发环境" class="headerlink" title="2.3、搭建以太坊开发环境"></a>2.3、搭建以太坊开发环境</h5><p>geth(go-ethereum)为以太坊的go语言客户端,geth官方安装指南：</p><blockquote><p><a href="https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum" target="_blank" rel="noopener">https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum</a></p></blockquote><p>创建一个账户</p><pre><code>geth account new  //会让你输入pw,由于账户没有找回密码的选项，请务必记住密码或者使用geth --password ./password account newgeth account list   //列出keystore文件夹中所有账号</code></pre><p>密钥文件在：~/.ethereum/keystore/中<br>Geth Console一个交互式的 JavaScript 执行环境</p><pre><code>geth console 2&gt;&gt; file_to_log_output  //进入交互式并输出日志&gt; eth.accounts   //列出账号[&quot;0x87c9207d37e9cc2ee8bae158ea922b131f5f6edb&quot;]&gt;personal.newAccount(&quot;password&quot;)tail -f file_to_log_output //查看日志</code></pre><ul><li>eth：包含一些跟操作区块链相关的方法</li><li>net：包含以下查看p2p网络状态的方法</li><li>admin：包含一些与管理节点相关的方法</li><li>miner：包含启动&amp;停止挖矿的一些方法</li><li>personal：主要包含一些管理账户的方法</li><li>txpool：包含一些查看交易内存池的方法</li><li>web3：包含了以上对象，还包含一些单位换算的方法</li></ul><blockquote><p><a href="https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts" target="_blank" rel="noopener">https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts</a></p></blockquote><p>Mist浏览器(已经集成以太坊钱包)</p><blockquote><p><a href="https://github.com/ethereum/mist/releases/" target="_blank" rel="noopener">https://github.com/ethereum/mist/releases/</a></p></blockquote><p>以太坊网络<br><a href="https://ethstats.net/" target="_blank" rel="noopener">https://ethstats.net/</a><br>中显示了以太坊网络中实时的数据</p><pre><code>&gt; net.listening  //显示是否在监听的节点true&gt; net.peerCount  //对等端点的数量0&gt; admin.peers  //返回已连接的对等端点的列表&gt; admin.nodeInfo</code></pre><h5 id="2-4、编写智能合约"><a href="#2-4、编写智能合约" class="headerlink" title="2.4、编写智能合约"></a>2.4、编写智能合约</h5><p>通过编写智能合约，我们可以让以太坊网络执行我们所设定的内容，我将采用<code>solidity</code>这门语言来编写合约代码（这门语言与<code>javascript</code>很像），当然<code>EVM</code>其实支持多种语言，不过主流是<code>solidity</code>，编写出来的文件是以<code>.sol</code>为后缀的，编写完成后编译成为字节码供<code>EVM</code>执行</p><p>solidity官方文档：<a href="https://solidity.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://solidity.readthedocs.io/en/latest/</a></p><p>安装<code>solidity</code>编译器<br>官网中提供了多种安装方法，这里采用二进制包来安装</p><pre><code>sudo add-apt-repository ppa:ethereum/ethereumsudo apt-get updatesudo apt-get install solc</code></pre><p>安装成功后，输入<code>solc --help</code>可查看相应的选项<br>除了这种方法外，常见的是使用以太坊提供的<code>Browser Solidity</code>一种在浏览器上的适用于小型合约的IDE，<code>solidity</code>官方文档中推荐使用<code>Remix</code></p><blockquote><p><a href="https://github.com/ethereum/remix-ide/" target="_blank" rel="noopener">https://github.com/ethereum/remix-ide/</a></p></blockquote><p><code>Remix</code>提供两种方式</p><ul><li>直接通过浏览器访问<a href="https://ethereum.github.io/browser-solidity/进行在线编写" target="_blank" rel="noopener">https://ethereum.github.io/browser-solidity/进行在线编写</a></li><li>本地安装</li></ul><p>首先要安装<code>npm</code>和<code>nodejs</code></p><pre><code>sudo apt-get install npmnpm install -g npm   //用于更新npmcurl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash //下载并安装nvm用于安装nodejsnvm install nodenode -v</code></pre><p>nvm为nodejs的包管理器，Node.js 就是运行在服务端的<code>JavaScript</code>。</p><p>安装remix</p><pre><code>npm install remix-ide -gremix-ide</code></pre><p><img src="https://i.imgur.com/oXkvZvv.png" alt=""></p><p>浏览器打开<a href="http://127.0.0.1:8080，就可以开始编程了" target="_blank" rel="noopener">http://127.0.0.1:8080，就可以开始编程了</a></p><h4 id="三、区块链资源"><a href="#三、区块链资源" class="headerlink" title="三、区块链资源"></a>三、区块链资源</h4><blockquote><p><a href="https://mp.weixin.qq.com/s/1ZBdZfpYwqpe_Xbj0t3WOw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/1ZBdZfpYwqpe_Xbj0t3WOw</a></p></blockquote><blockquote><p><a href="https://ethfans.org/" target="_blank" rel="noopener">https://ethfans.org/</a></p></blockquote>]]></content>
+    <content type="html"><![CDATA[<p>早就听说过区块链这个技术的威名，于是不知天高低后的想去申请做一个区块链的项目，但真正接触起来才发现，这对我来说是一个挑战，但既然当初不知天高低后的吹了出去，就只有努力填坑喽！写几遍blog记录我的所学，分享出来，共同进步！</p><h4 id="一、区块链"><a href="#一、区块链" class="headerlink" title="一、区块链"></a>一、区块链</h4><h5 id="1-1、去中心化应用-DApp"><a href="#1-1、去中心化应用-DApp" class="headerlink" title="1.1、去中心化应用(DApp)"></a>1.1、去中心化应用(DApp)</h5><p>它是一种网络应用，后端在去中心化的点对点网络上运行，且其源代码是开源的。不存在有完全能够控制DApp的节点。</p><ul><li>分布式应用：将应用分布在多个服务器上</li><li>账本–是一种只可增加的交易列表</li><li>区块链–创建去中心化账本的数据结构，用于储存数据</li></ul><p>bitcoin白皮书 <a href="https://bitcoin.org/en/bitcoin-paper" target="_blank" rel="noopener">https://bitcoin.org/en/bitcoin-paper</a></p><h5 id="1-2、几个常见的概念"><a href="#1-2、几个常见的概念" class="headerlink" title="1.2、几个常见的概念"></a>1.2、几个常见的概念</h5><ul><li>公有链、联盟链和私有链 <ul><li>公有链（Public Blockchain）：世界上所有人都可以发送交易，具有高度的去中心化，读写权限对所有人开放（如比特币）。</li><li>联盟链（Consortium Blockchain）：介于公有链和私有链直接，实现了“部分去中心化”，读写权限对加入联盟的节点开放。</li><li>私有链（Private Blockchain）：整个网络由某个组织完全控制，参与的节点具有严格的限制且少。</li></ul></li></ul><p>可以看出三种链的去中心化程度是由高到底的，公有链最高</p><ul><li>记账模式<ul><li>UTXO 是“unspent transaction input/output”的缩写，指“未花费的交易输入输出”，是区块链网络中的一种记账模式，主要应用在比特币系的数字货币中，它记录的是交易事件，而不是记录最终状态.</li><li>账户模式即账户余额模式，主要应用于智能合约中。</li></ul></li><li>区块链共识算法<ul><li>PoW:通过计算资源（又称算力）来决定记账权。</li><li>PoS:通过拥有又权力的大小来决定记账权。</li><li>DPoS:Delegated Proof of Stake 代理权益证明</li></ul></li></ul><h4 id="二、以太坊-ethereum"><a href="#二、以太坊-ethereum" class="headerlink" title="二、以太坊(ethereum)"></a>二、以太坊(ethereum)</h4><h5 id="2-1、什么是以太坊"><a href="#2-1、什么是以太坊" class="headerlink" title="2.1、什么是以太坊"></a>2.1、什么是以太坊</h5><p>是一个去中心化的平台，可以在其上运行使用智能合约编写的DApp</p><p>以太坊的白皮书</p><blockquote><p><a href="https://github.com/ethereum/wiki/wiki/White-Paper" target="_blank" rel="noopener">https://github.com/ethereum/wiki/wiki/White-Paper</a></p></blockquote><p>以太坊虚拟机（EVM）可执行任意复杂算法的编码，使以太坊是“图灵完备的”</p><h5 id="2-2、以太坊的几个基本概念"><a href="#2-2、以太坊的几个基本概念" class="headerlink" title="2.2、以太坊的几个基本概念"></a>2.2、以太坊的几个基本概念</h5><ul><li>账户：每个账户都有一对密钥来定义，账户以地址为索引，地址为公钥的后20个字节<ul><li>外部账户（EOA,externally owned accounts）:由私人密钥控制，具有以太币的状态（即人用的账户）</li><li>合约账户(CA,contracts accounts)：由合约代码控制（即智能合约用的账户），且只能由外部账户激活</li></ul></li><li>交易： EOA 账户将一个经过签名的数据包发送到另外一个账户的过程，这个过程产生的账户状态变化将被存储到以太坊区块链上。</li><li>消息：一个合约账户调用其他合约账户的过程。</li><li>EVM:以太坊虚拟机，用来执行以太坊智能合约字节码（类似于java的jvm）</li><li>gas:是执行智能合约操作的燃料，智能合约的每一个步骤都会消耗 gas,gas是由以太坊的平台代币以太币转化而来</li></ul><h5 id="2-3、搭建以太坊开发环境"><a href="#2-3、搭建以太坊开发环境" class="headerlink" title="2.3、搭建以太坊开发环境"></a>2.3、搭建以太坊开发环境</h5><p>geth(go-ethereum)为以太坊的go语言客户端,geth官方安装指南：</p><blockquote><p><a href="https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum" target="_blank" rel="noopener">https://github.com/ethereum/go-ethereum/wiki/Building-Ethereum</a></p></blockquote><p>创建一个账户</p><pre><code>geth account new  //会让你输入pw,由于账户没有找回密码的选项，请务必记住密码或者使用geth --password ./password account newgeth account list   //列出keystore文件夹中所有账号</code></pre><p>密钥文件在：~/.ethereum/keystore/中<br>Geth Console一个交互式的 JavaScript 执行环境</p><pre><code>geth console 2&gt;&gt; file_to_log_output  //进入交互式并输出日志&gt; eth.accounts   //列出账号[&quot;0x87c9207d37e9cc2ee8bae158ea922b131f5f6edb&quot;]&gt;personal.newAccount(&quot;password&quot;)tail -f file_to_log_output //查看日志</code></pre><ul><li>eth：包含一些跟操作区块链相关的方法</li><li>net：包含以下查看p2p网络状态的方法</li><li>admin：包含一些与管理节点相关的方法</li><li>miner：包含启动&amp;停止挖矿的一些方法</li><li>personal：主要包含一些管理账户的方法</li><li>txpool：包含一些查看交易内存池的方法</li><li>web3：包含了以上对象，还包含一些单位换算的方法</li></ul><blockquote><p><a href="https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts" target="_blank" rel="noopener">https://github.com/ethereum/go-ethereum/wiki/Managing-your-accounts</a></p></blockquote><p>Mist浏览器(已经集成以太坊钱包)</p><blockquote><p><a href="https://github.com/ethereum/mist/releases/" target="_blank" rel="noopener">https://github.com/ethereum/mist/releases/</a></p></blockquote><p>以太坊网络<br><a href="https://ethstats.net/" target="_blank" rel="noopener">https://ethstats.net/</a><br>中显示了以太坊网络中实时的数据</p><pre><code>&gt; net.listening  //显示是否在监听的节点true&gt; net.peerCount  //对等端点的数量0&gt; admin.peers  //返回已连接的对等端点的列表&gt; admin.nodeInfo</code></pre><h5 id="2-4、编写智能合约"><a href="#2-4、编写智能合约" class="headerlink" title="2.4、编写智能合约"></a>2.4、编写智能合约</h5><p>通过编写智能合约，我们可以让以太坊网络执行我们所设定的内容，我将采用<code>solidity</code>这门语言来编写合约代码（这门语言与<code>javascript</code>很像），当然<code>EVM</code>其实支持多种语言，不过主流是<code>solidity</code>，编写出来的文件是以<code>.sol</code>为后缀的，编写完成后编译成为字节码供<code>EVM</code>执行</p><p>solidity官方文档：<a href="https://solidity.readthedocs.io/en/latest/" target="_blank" rel="noopener">https://solidity.readthedocs.io/en/latest/</a></p><p>安装<code>solidity</code>编译器<br>官网中提供了多种安装方法，这里采用二进制包来安装</p><pre><code>sudo add-apt-repository ppa:ethereum/ethereumsudo apt-get updatesudo apt-get install solc</code></pre><p>安装成功后，输入<code>solc --help</code>可查看相应的选项<br>除了这种方法外，常见的是使用以太坊提供的<code>Browser Solidity</code>一种在浏览器上的适用于小型合约的IDE，<code>solidity</code>官方文档中推荐使用<code>Remix</code></p><blockquote><p><a href="https://github.com/ethereum/remix-ide/" target="_blank" rel="noopener">https://github.com/ethereum/remix-ide/</a></p></blockquote><p><code>Remix</code>提供两种方式</p><ul><li>直接通过浏览器访问<a href="https://ethereum.github.io/browser-solidity/进行在线编写" target="_blank" rel="noopener">https://ethereum.github.io/browser-solidity/进行在线编写</a></li><li>本地安装</li></ul><p>首先要安装<code>npm</code>和<code>nodejs</code></p><pre><code>sudo apt-get install npmnpm install -g npm   //用于更新npmcurl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash //下载并安装nvm用于安装nodejsnvm install nodenode -v</code></pre><p>nvm为nodejs的包管理器，Node.js 就是运行在服务端的<code>JavaScript</code>。</p><p>安装remix</p><pre><code>npm install remix-ide -gremix-ide</code></pre><p><img src="https://i.imgur.com/oXkvZvv.png" alt=""></p><p>浏览器打开<a href="http://127.0.0.1:8080，就可以开始编程了" target="_blank" rel="noopener">http://127.0.0.1:8080，就可以开始编程了</a></p><h4 id="三、区块链资源"><a href="#三、区块链资源" class="headerlink" title="三、区块链资源"></a>三、区块链资源</h4><blockquote><p><a href="https://mp.weixin.qq.com/s/1ZBdZfpYwqpe_Xbj0t3WOw" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/1ZBdZfpYwqpe_Xbj0t3WOw</a></p></blockquote><blockquote><p><a href="https://ethfans.org/" target="_blank" rel="noopener">https://ethfans.org/</a></p></blockquote>]]></content>
     
     <summary type="html">
     
@@ -66,34 +66,6 @@
   </entry>
   
   <entry>
-    <title>gdb的使用</title>
-    <link href="https://life0sfc.github.io/2019/02/03/gdb%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
-    <id>https://life0sfc.github.io/2019/02/03/gdb的使用/</id>
-    <published>2019-02-03T09:05:32.163Z</published>
-    <updated>2018-10-14T03:55:51.971Z</updated>
-    
-    <content type="html"><![CDATA[<p>gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍</p><h4 id="1、启动"><a href="#1、启动" class="headerlink" title="1、启动"></a>1、启动</h4><pre><code>start</code></pre><h4 id="2、断点"><a href="#2、断点" class="headerlink" title="2、断点"></a>2、断点</h4><pre><code>b *地址b 符号名    break &lt;function&gt; 在函数体入口处下断点。</code></pre><h4 id="3、单步"><a href="#3、单步" class="headerlink" title="3、单步"></a>3、单步</h4><pre><code>si: step in源码单步：next</code></pre><h4 id="4、查看内存"><a href="#4、查看内存" class="headerlink" title="4、查看内存"></a>4、查看内存</h4><pre><code>x/[]i 对指定数量的指令进行反汇编x/[]x 显示指定长度的数据   $rax  x/[]s以字符串形式显示数据</code></pre><p><code>x/10w $esp</code> 相当于显示栈上40B的数据，即栈上10个空间的数据</p><p>除了以上常见的四点外，gdb的常见命令还有</p><ul><li>set命令，常见的是set architecture，设置使用intel还是AT&amp;T语法，更多可使用help set查看</li><li>bt (backtrace)：打印出回溯的所有栈</li><li>disas反汇编命令，直接disas是反汇编当前函数<ul><li>disas /r      (显示汇编指令对应十六进制值)</li><li>disas /m      (如果有源码，显示对应行源码)</li></ul></li><li>help命令，以上的命令都可以查到相关说明</li></ul><p>相关插件<br>peda:<a href="https://github.com/longld/peda" target="_blank" rel="noopener">https://github.com/longld/peda</a><br>libheap:<a href="https://github.com/cloudburst/libheap" target="_blank" rel="noopener">https://github.com/cloudburst/libheap</a><br>以上只是一下gdb常见命令，更多可用help命令去查看，目前只想到这些，以后在补充</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍&lt;/p&gt;
-&lt;h4 id=&quot;1、启动&quot;&gt;&lt;a href=&quot;#1、启动&quot; class=&quot;headerlink&quot; title=&quot;1、启动&quot;&gt;&lt;/a&gt;1、启动&lt;/h4&gt;&lt;pre&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="tools" scheme="https://life0sfc.github.io/categories/tools/"/>
-    
-    
-      <category term="gdb" scheme="https://life0sfc.github.io/tags/gdb/"/>
-    
-      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
     <title>abexcrackme#2</title>
     <link href="https://life0sfc.github.io/2019/02/03/abexcrackme#2/"/>
     <id>https://life0sfc.github.io/2019/02/03/abexcrackme#2/</id>
@@ -122,6 +94,34 @@
   </entry>
   
   <entry>
+    <title>gdb的使用</title>
+    <link href="https://life0sfc.github.io/2019/02/03/gdb%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://life0sfc.github.io/2019/02/03/gdb的使用/</id>
+    <published>2019-02-03T09:05:32.163Z</published>
+    <updated>2018-10-14T03:55:51.971Z</updated>
+    
+    <content type="html"><![CDATA[<p>gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍</p><h4 id="1、启动"><a href="#1、启动" class="headerlink" title="1、启动"></a>1、启动</h4><pre><code>start</code></pre><h4 id="2、断点"><a href="#2、断点" class="headerlink" title="2、断点"></a>2、断点</h4><pre><code>b *地址b 符号名    break &lt;function&gt; 在函数体入口处下断点。</code></pre><h4 id="3、单步"><a href="#3、单步" class="headerlink" title="3、单步"></a>3、单步</h4><pre><code>si: step in源码单步：next</code></pre><h4 id="4、查看内存"><a href="#4、查看内存" class="headerlink" title="4、查看内存"></a>4、查看内存</h4><pre><code>x/[]i 对指定数量的指令进行反汇编x/[]x 显示指定长度的数据   $rax  x/[]s以字符串形式显示数据</code></pre><p><code>x/10w $esp</code> 相当于显示栈上40B的数据，即栈上10个空间的数据</p><p>除了以上常见的四点外，gdb的常见命令还有</p><ul><li>set命令，常见的是set architecture，设置使用intel还是AT&amp;T语法，更多可使用help set查看</li><li>bt (backtrace)：打印出回溯的所有栈</li><li>disas反汇编命令，直接disas是反汇编当前函数<ul><li>disas /r      (显示汇编指令对应十六进制值)</li><li>disas /m      (如果有源码，显示对应行源码)</li></ul></li><li>help命令，以上的命令都可以查到相关说明</li></ul><p>相关插件<br>peda:<a href="https://github.com/longld/peda" target="_blank" rel="noopener">https://github.com/longld/peda</a><br>libheap:<a href="https://github.com/cloudburst/libheap" target="_blank" rel="noopener">https://github.com/cloudburst/libheap</a><br>以上只是一下gdb常见命令，更多可用help命令去查看，目前只想到这些，以后在补充</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍&lt;/p&gt;
+&lt;h4 id=&quot;1、启动&quot;&gt;&lt;a href=&quot;#1、启动&quot; class=&quot;headerlink&quot; title=&quot;1、启动&quot;&gt;&lt;/a&gt;1、启动&lt;/h4&gt;&lt;pre&gt;&lt;
+      
+    
+    </summary>
+    
+      <category term="tools" scheme="https://life0sfc.github.io/categories/tools/"/>
+    
+    
+      <category term="gdb" scheme="https://life0sfc.github.io/tags/gdb/"/>
+    
+      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
+    
+  </entry>
+  
+  <entry>
     <title>逆向题--逆向找出正确的flagre2</title>
     <link href="https://life0sfc.github.io/2019/02/03/%E9%80%86%E5%90%91%E9%A2%98--%E9%80%86%E5%90%91%E6%89%BE%E5%87%BA%E6%AD%A3%E7%A1%AE%E7%9A%84flagre2/"/>
     <id>https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/</id>
@@ -142,9 +142,9 @@
       <category term="ctf" scheme="https://life0sfc.github.io/categories/ctf/"/>
     
     
-      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
-    
       <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
+    
+      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
     
   </entry>
   
