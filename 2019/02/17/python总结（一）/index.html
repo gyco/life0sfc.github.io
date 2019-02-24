@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="life0sfc">
 <meta property="og:description" content="这是我在学习python的过程中做的一些笔记，对一些我觉得学习过程中不太容易理解的概念，不太成体系，见谅！ 1、python命令行python -h python -c cmd : program passed in as string (terminates option list) python -m mod :  run library module as a script (termina">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-02-17T06:30:36.532Z">
+<meta property="og:updated_time" content="2019-02-24T05:03:49.194Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python总结（一）">
 <meta name="twitter:description" content="这是我在学习python的过程中做的一些笔记，对一些我觉得学习过程中不太容易理解的概念，不太成体系，见谅！ 1、python命令行python -h python -c cmd : program passed in as string (terminates option list) python -m mod :  run library module as a script (termina">
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.6k
+                  1.7k
                 </span>
               
 
@@ -551,7 +551,12 @@ third=2
 <pre><code>def func(**args):
     print(args)
 </code></pre><p>当用func(a=1,b=2)调用函数时,参数args将会是字典{‘a’:1,’b’:2}</p>
-<h5 id="8、python-读文件"><a href="#8、python-读文件" class="headerlink" title="8、python 读文件"></a>8、python 读文件</h5><pre><code>with open(&quot;path+file.js&quot; ,&quot;r&quot;) as topo:
+<h6 id="7-3、lambda函数"><a href="#7-3、lambda函数" class="headerlink" title="7.3、lambda函数"></a>7.3、lambda函数</h6><p>冒号前是函数参数，冒号右边是函数返回值</p>
+<pre><code>arr1  = [1,2,3,4]
+arr2 = map(lambda x: 2*x, arr1)  //arr1是map函数的参数
+&gt;&gt;&gt; arr2
+[2, 4, 6, 8]
+</code></pre><h5 id="8、python-读文件"><a href="#8、python-读文件" class="headerlink" title="8、python 读文件"></a>8、python 读文件</h5><pre><code>with open(&quot;path+file.js&quot; ,&quot;r&quot;) as topo:
 python path+file.py   
 </code></pre><h5 id="9、python闭包"><a href="#9、python闭包" class="headerlink" title="9、python闭包"></a>9、python闭包</h5><pre><code>def sum(a):
     def add(b):
@@ -652,6 +657,10 @@ python -m SimpleHTTPServer 80 &amp;    //最后加一个 &amp; ，则该命令�
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2019/02/24/linux中命令行工具/" rel="prev" title="linux中命令行工具">
+                linux中命令行工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -732,7 +741,7 @@ python -m SimpleHTTPServer 80 &amp;    //最后加一个 &amp; ，则该命令�
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -743,7 +752,7 @@ python -m SimpleHTTPServer 80 &amp;    //最后加一个 &amp; ，则该命令�
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">categories</span>
                 </a>
               </div>
@@ -754,7 +763,7 @@ python -m SimpleHTTPServer 80 &amp;    //最后加一个 &amp; ，则该命令�
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -816,7 +825,7 @@ python -m SimpleHTTPServer 80 &amp;    //最后加一个 &amp; ，则该命令�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、python命令行"><span class="nav-text">1、python命令行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、字符串-lt-gt-list"><span class="nav-text">2、字符串&lt;==&gt;list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、使用virtualenv和virtualenvwrapper"><span class="nav-text">3、使用virtualenv和virtualenvwrapper</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、if-for常规和推导式写法"><span class="nav-text">4、if/for常规和推导式写法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-1、if"><span class="nav-text">4.1、if</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2、for"><span class="nav-text">4.2、for</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、python异常处理"><span class="nav-text">5、python异常处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、python格式字符串"><span class="nav-text">6、python格式字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7、python函数"><span class="nav-text">7、python函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#7-1、python内建函数（即python自带的函数）"><span class="nav-text">7.1、python内建函数（即python自带的函数）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-2、函数参数"><span class="nav-text">7.2、函数参数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8、python-读文件"><span class="nav-text">8、python 读文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9、python闭包"><span class="nav-text">9、python闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10、python装饰器（修饰函数的作用）"><span class="nav-text">10、python装饰器（修饰函数的作用）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11、python浅拷贝和深拷贝"><span class="nav-text">11、python浅拷贝和深拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12、其他"><span class="nav-text">12、其他</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#12-1、is和-的区别"><span class="nav-text">12.1、is和==的区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-2、python中SimpleHTTPServer"><span class="nav-text">12.2、python中SimpleHTTPServer</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-4、pep8规范"><span class="nav-text">12.4、pep8规范</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-5、安装Python-3-6-在Ubuntu-16-04-LTS-版本"><span class="nav-text">12.5、安装Python 3.6 在Ubuntu 16.04 LTS 版本</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、python命令行"><span class="nav-text">1、python命令行</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2、字符串-lt-gt-list"><span class="nav-text">2、字符串&lt;==&gt;list</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3、使用virtualenv和virtualenvwrapper"><span class="nav-text">3、使用virtualenv和virtualenvwrapper</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4、if-for常规和推导式写法"><span class="nav-text">4、if/for常规和推导式写法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-1、if"><span class="nav-text">4.1、if</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-2、for"><span class="nav-text">4.2、for</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5、python异常处理"><span class="nav-text">5、python异常处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6、python格式字符串"><span class="nav-text">6、python格式字符串</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7、python函数"><span class="nav-text">7、python函数</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#7-1、python内建函数（即python自带的函数）"><span class="nav-text">7.1、python内建函数（即python自带的函数）</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-2、函数参数"><span class="nav-text">7.2、函数参数</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-3、lambda函数"><span class="nav-text">7.3、lambda函数</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8、python-读文件"><span class="nav-text">8、python 读文件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9、python闭包"><span class="nav-text">9、python闭包</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10、python装饰器（修饰函数的作用）"><span class="nav-text">10、python装饰器（修饰函数的作用）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11、python浅拷贝和深拷贝"><span class="nav-text">11、python浅拷贝和深拷贝</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12、其他"><span class="nav-text">12、其他</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#12-1、is和-的区别"><span class="nav-text">12.1、is和==的区别</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-2、python中SimpleHTTPServer"><span class="nav-text">12.2、python中SimpleHTTPServer</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-4、pep8规范"><span class="nav-text">12.4、pep8规范</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#12-5、安装Python-3-6-在Ubuntu-16-04-LTS-版本"><span class="nav-text">12.5、安装Python 3.6 在Ubuntu 16.04 LTS 版本</span></a></li></ol></li></ol></div>
             
 
           </div>
