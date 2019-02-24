@@ -6,37 +6,10 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://life0sfc.github.io/"/>
-  <updated>2019-02-24T05:50:30.298Z</updated>
+  <updated>2019-02-24T05:50:17.080Z</updated>
   <id>https://life0sfc.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>IDA pro 静态分析.md</title>
-    <link href="https://life0sfc.github.io/2019/02/24/IDA%20pro-%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/"/>
-    <id>https://life0sfc.github.io/2019/02/24/IDA pro-静态分析/</id>
-    <published>2019-02-24T05:47:32.000Z</published>
-    <updated>2019-02-24T05:50:30.298Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="一、几个概念"><a href="#一、几个概念" class="headerlink" title="一、几个概念"></a>一、几个概念</h4><h5 id="1-反汇编与反编译"><a href="#1-反汇编与反编译" class="headerlink" title="1. 反汇编与反编译"></a>1. 反汇编与反编译</h5><p>源代码程序–&gt;可执行程序，需要经过编译器–&gt;汇编器–&gt;链接器；用来撤销编译和汇编的过程，称之为反编译和反汇编</p><ul><li>反汇编：从机器码到汇编代码</li><li>反编译：以汇编代码或机器码到高级语言</li></ul><h5 id="2-常见的指令架构"><a href="#2-常见的指令架构" class="headerlink" title="2. 常见的指令架构"></a>2. 常见的指令架构</h5><p>指令架构：x86、ARM、MIPS</p><ul><li>x86主要应用于pc机上，主要有两种语法表示汇编代码：Intel和AT&amp;T</li><li>ARM主要应用于移动端，它的分类也很多，这里不展开</li><li>MIPS主要应用于路由器等设备上</li></ul><h5 id="3-反汇编的主要方法"><a href="#3-反汇编的主要方法" class="headerlink" title="3. 反汇编的主要方法"></a>3. 反汇编的主要方法</h5><p>反汇编的主要方法：线性扫描、递归下降</p><h5 id="4-ida"><a href="#4-ida" class="headerlink" title="4. ida"></a>4. ida</h5><p>ida是一种递归下降的反汇编器，它支持静态分析和动态调试程序，尤其是在静态分析领域，ida是一款神器<br>下面介绍了ida静态分析程序的相关约定<br>ida的命名方式与虚拟地址和栈帧变量有关，常见的有以下几个</p><pre><code>sub_xxxx  地址xxxx处的子例程（过程/方法）loc_xxxx  地址xxxx处的一个指令byte_xxxx  位置xxxx处的8位数据unk_xxxx  位置xxxx处的大小未知的数据</code></pre><p>栈是程序运行是的一种数据传输方式，ida在静态分析中提供了栈视图来方便用户的使用</p><pre><code>.text:00401020 ; Attributes: bp-based frame.text:00401020.text:00401020 ; int __cdecl sub_401020(char *).text:00401020 sub_401020  proc near   ; CODE XREF: sub_401005↑j.text:00401020.text:00401020 var_4C  = byte ptr -4Ch        //IDA提供的一个摘要栈视图，列出栈帧内被直接引用的每一个变量，以及大小与帧指针的偏移量.text:00401020 var_C   = byte ptr -0Ch         // var_为局部变量名称的前缀，后面表示变量与被保存的帧指针之间距离.text:00401020 var_4   = dword ptr -4.text:00401020 arg_0   = dword ptr  8         // 函数参数名以arg_为前缀，后面表示与最顶端参数之间的相对距离(十六进制).text:00401020.text:00401020 push ebp ;  .text:00401021 mov ebp, esp.text:00401023 sub esp, 4Ch.text:00401026 push ebx</code></pre><p> 下图为ida通过两种寄存器ESP和EBP来表示栈</p><h4 id="二、ida中具体的操作"><a href="#二、ida中具体的操作" class="headerlink" title="二、ida中具体的操作"></a>二、ida中具体的操作</h4><h5 id="1、静态分析中常用快捷键"><a href="#1、静态分析中常用快捷键" class="headerlink" title="1、静态分析中常用快捷键"></a>1、静态分析中常用快捷键</h5><ul><li>F5/tab:功能都是查看伪c代码，但tab可以在伪c代码和汇编之间相互切换，且切换时光标位置相同</li><li>shift+F12 : strings</li><li>shift+F7 ：segments</li><li>alt+t :text search</li><li>ctrl+t: next text</li><li>g ：快速查找到对应地址</li><li>shift+e :提取数据</li><li>Enter：跟进函数实现，查看标号对应的地址</li><li>Esc  返回跟进处</li><li>A  解释光标处的地址为一个字符串的首地址</li><li>B  十六进制数与二进制数转换</li><li>C  解释光标处的地址为一条指令</li><li>D  解释光标处的地址为数据</li><li>H  十六进制数与十进制数转换</li><li>K  将数据解释为栈变量</li><li>X  转换视图到交叉参考模式</li></ul><h5 id="2、ida-对于结构体的定义及标识"><a href="#2、ida-对于结构体的定义及标识" class="headerlink" title="2、ida 对于结构体的定义及标识"></a>2、ida 对于结构体的定义及标识</h5><ul><li>可之间引用的结构体：<ul><li>IDA会根据文件的类型自动加载相应的类型库，如vc6win(VisualC++6.0)，用户做底层分析时，可以添加<code>mssdk（windows.h）、ntddk(ntddk.h)</code>等。这些库中有相应的结构体，用户分析代码时，可以直接引用。可以通过快捷键<code>”Shitft+F11“</code>，打开加载类型库窗口，然后用鼠标右键选择<code>”Load Type Library</code>(或快捷键Insert)“,在弹出的窗口中选择相应类型库。选择好类型库后就可以查看内置数据结构了。选择菜单”View/Open subviews/Structure就可以打开结构体管理窗口。按Insert键，在弹出的窗口中选择”Add Standard Structure“，打开标准结构库窗口查找需要的结构名，然后就可以正常使用这些库了。• 在默认情况下，IDA会加载常用的结构，程序类常用的结构体会显示出来，在WNDCLASSA结构一行单击右键，在弹出的菜单中选择Unhide，快捷键是Ctrl++可展开结构，程序相应代码处直接以结构体显示。收起结构的快捷键是Ctrl+-。</li></ul></li><li>定义新的结构体<ul><li>打开结构体窗口，按下Insert键增加一个新的结构体类型，命名为student。把光标停留在student结构的ends一行，按D键可以键入数据（如id、age）等，重复D键可以在db、dw、dd间切换，直到变成dd，表示是dword类型。而按A键则是键入ASCII字符（如name）为结构体成员。通过N键可以修改相应名称。</li></ul></li><li>把数据标识成结构体<ul><li>创建好结构体后，可以将鼠标放在要被定义的这个位置处，然后执行菜单<code>”Edit/Structs/Sturcuvar“</code>命令，或者快捷键<code>alt+Q</code>，然后选择student结构体。这时对应的数据会被标识为相应的结构体。然后在对应的代码位置<code>0x00401006</code>处，选择需要重新定义的数据，如<code>[esi+18h]</code>通过<code>”Edit/Operand types/Offset/Offset(Struct)“</code>或者快捷键T可将相应位置的代码修改为有意义的结构体名称。</li></ul></li></ul><h4 id="三、在linux中安装ida"><a href="#三、在linux中安装ida" class="headerlink" title="三、在linux中安装ida"></a>三、在linux中安装ida</h4><p><code>wine</code>安装（官网）–&gt;安装ida(不安装python27 x64)–&gt;下载 Python 2.7 的 MSI 文件，命令行下执行：<code>wine64 msiexec /i python-2.7.15.amd64.msi</code><br>wine安装的文件在<code>/home/.wine/drive_c/</code>中，这个相当与windows的c盘</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;一、几个概念&quot;&gt;&lt;a href=&quot;#一、几个概念&quot; class=&quot;headerlink&quot; title=&quot;一、几个概念&quot;&gt;&lt;/a&gt;一、几个概念&lt;/h4&gt;&lt;h5 id=&quot;1-反汇编与反编译&quot;&gt;&lt;a href=&quot;#1-反汇编与反编译&quot; class=&quot;headerlink
-      
-    
-    </summary>
-    
-      <category term="reverse" scheme="https://life0sfc.github.io/categories/reverse/"/>
-    
-    
-      <category term="tools" scheme="https://life0sfc.github.io/tags/tools/"/>
-    
-      <category term="IDA pro" scheme="https://life0sfc.github.io/tags/IDA-pro/"/>
-    
-  </entry>
   
   <entry>
     <title>IDA pro分析的常见问题</title>
@@ -52,6 +25,33 @@
       
       
         &lt;h4 id=&quot;1、call-analysis-failed&quot;&gt;&lt;a href=&quot;#1、call-analysis-failed&quot; class=&quot;headerlink&quot; title=&quot;1、call analysis failed&quot;&gt;&lt;/a&gt;1、call analysis fail
+      
+    
+    </summary>
+    
+      <category term="reverse" scheme="https://life0sfc.github.io/categories/reverse/"/>
+    
+    
+      <category term="tools" scheme="https://life0sfc.github.io/tags/tools/"/>
+    
+      <category term="IDA pro" scheme="https://life0sfc.github.io/tags/IDA-pro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDA pro 静态分析</title>
+    <link href="https://life0sfc.github.io/2019/02/24/IDA%20pro-%E9%9D%99%E6%80%81%E5%88%86%E6%9E%90/"/>
+    <id>https://life0sfc.github.io/2019/02/24/IDA pro-静态分析/</id>
+    <published>2019-02-24T05:47:32.000Z</published>
+    <updated>2019-02-24T05:53:29.628Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="一、几个概念"><a href="#一、几个概念" class="headerlink" title="一、几个概念"></a>一、几个概念</h4><h5 id="1-反汇编与反编译"><a href="#1-反汇编与反编译" class="headerlink" title="1. 反汇编与反编译"></a>1. 反汇编与反编译</h5><p>源代码程序–&gt;可执行程序，需要经过编译器–&gt;汇编器–&gt;链接器；用来撤销编译和汇编的过程，称之为反编译和反汇编</p><ul><li>反汇编：从机器码到汇编代码</li><li>反编译：以汇编代码或机器码到高级语言</li></ul><h5 id="2-常见的指令架构"><a href="#2-常见的指令架构" class="headerlink" title="2. 常见的指令架构"></a>2. 常见的指令架构</h5><p>指令架构：x86、ARM、MIPS</p><ul><li>x86主要应用于pc机上，主要有两种语法表示汇编代码：Intel和AT&amp;T</li><li>ARM主要应用于移动端，它的分类也很多，这里不展开</li><li>MIPS主要应用于路由器等设备上</li></ul><h5 id="3-反汇编的主要方法"><a href="#3-反汇编的主要方法" class="headerlink" title="3. 反汇编的主要方法"></a>3. 反汇编的主要方法</h5><p>反汇编的主要方法：线性扫描、递归下降</p><h5 id="4-ida"><a href="#4-ida" class="headerlink" title="4. ida"></a>4. ida</h5><p>ida是一种递归下降的反汇编器，它支持静态分析和动态调试程序，尤其是在静态分析领域，ida是一款神器<br>下面介绍了ida静态分析程序的相关约定<br>ida的命名方式与虚拟地址和栈帧变量有关，常见的有以下几个</p><pre><code>sub_xxxx  地址xxxx处的子例程（过程/方法）loc_xxxx  地址xxxx处的一个指令byte_xxxx  位置xxxx处的8位数据unk_xxxx  位置xxxx处的大小未知的数据</code></pre><p>栈是程序运行是的一种数据传输方式，ida在静态分析中提供了栈视图来方便用户的使用</p><pre><code>.text:00401020 ; Attributes: bp-based frame.text:00401020.text:00401020 ; int __cdecl sub_401020(char *).text:00401020 sub_401020  proc near   ; CODE XREF: sub_401005↑j.text:00401020.text:00401020 var_4C  = byte ptr -4Ch        //IDA提供的一个摘要栈视图，列出栈帧内被直接引用的每一个变量，以及大小与帧指针的偏移量.text:00401020 var_C   = byte ptr -0Ch         // var_为局部变量名称的前缀，后面表示变量与被保存的帧指针之间距离.text:00401020 var_4   = dword ptr -4.text:00401020 arg_0   = dword ptr  8         // 函数参数名以arg_为前缀，后面表示与最顶端参数之间的相对距离(十六进制).text:00401020.text:00401020 push ebp ;  .text:00401021 mov ebp, esp.text:00401023 sub esp, 4Ch.text:00401026 push ebx</code></pre><p> 下图为ida通过两种寄存器ESP和EBP来表示栈</p><h4 id="二、ida中具体的操作"><a href="#二、ida中具体的操作" class="headerlink" title="二、ida中具体的操作"></a>二、ida中具体的操作</h4><h5 id="1、静态分析中常用快捷键"><a href="#1、静态分析中常用快捷键" class="headerlink" title="1、静态分析中常用快捷键"></a>1、静态分析中常用快捷键</h5><ul><li>F5/tab:功能都是查看伪c代码，但tab可以在伪c代码和汇编之间相互切换，且切换时光标位置相同</li><li>shift+F12 : strings</li><li>shift+F7 ：segments</li><li>alt+t :text search</li><li>ctrl+t: next text</li><li>g ：快速查找到对应地址</li><li>shift+e :提取数据</li><li>Enter：跟进函数实现，查看标号对应的地址</li><li>Esc  返回跟进处</li><li>A  解释光标处的地址为一个字符串的首地址</li><li>B  十六进制数与二进制数转换</li><li>C  解释光标处的地址为一条指令</li><li>D  解释光标处的地址为数据</li><li>H  十六进制数与十进制数转换</li><li>K  将数据解释为栈变量</li><li>X  转换视图到交叉参考模式</li></ul><h5 id="2、ida-对于结构体的定义及标识"><a href="#2、ida-对于结构体的定义及标识" class="headerlink" title="2、ida 对于结构体的定义及标识"></a>2、ida 对于结构体的定义及标识</h5><ul><li>可之间引用的结构体：<ul><li>IDA会根据文件的类型自动加载相应的类型库，如vc6win(VisualC++6.0)，用户做底层分析时，可以添加<code>mssdk（windows.h）、ntddk(ntddk.h)</code>等。这些库中有相应的结构体，用户分析代码时，可以直接引用。可以通过快捷键<code>”Shitft+F11“</code>，打开加载类型库窗口，然后用鼠标右键选择<code>”Load Type Library</code>(或快捷键Insert)“,在弹出的窗口中选择相应类型库。选择好类型库后就可以查看内置数据结构了。选择菜单”View/Open subviews/Structure就可以打开结构体管理窗口。按Insert键，在弹出的窗口中选择”Add Standard Structure“，打开标准结构库窗口查找需要的结构名，然后就可以正常使用这些库了。• 在默认情况下，IDA会加载常用的结构，程序类常用的结构体会显示出来，在WNDCLASSA结构一行单击右键，在弹出的菜单中选择Unhide，快捷键是Ctrl++可展开结构，程序相应代码处直接以结构体显示。收起结构的快捷键是Ctrl+-。</li></ul></li><li>定义新的结构体<ul><li>打开结构体窗口，按下Insert键增加一个新的结构体类型，命名为student。把光标停留在student结构的ends一行，按D键可以键入数据（如id、age）等，重复D键可以在db、dw、dd间切换，直到变成dd，表示是dword类型。而按A键则是键入ASCII字符（如name）为结构体成员。通过N键可以修改相应名称。</li></ul></li><li>把数据标识成结构体<ul><li>创建好结构体后，可以将鼠标放在要被定义的这个位置处，然后执行菜单<code>”Edit/Structs/Sturcuvar“</code>命令，或者快捷键<code>alt+Q</code>，然后选择student结构体。这时对应的数据会被标识为相应的结构体。然后在对应的代码位置<code>0x00401006</code>处，选择需要重新定义的数据，如<code>[esi+18h]</code>通过<code>”Edit/Operand types/Offset/Offset(Struct)“</code>或者快捷键T可将相应位置的代码修改为有意义的结构体名称。</li></ul></li></ul><h4 id="三、在linux中安装ida"><a href="#三、在linux中安装ida" class="headerlink" title="三、在linux中安装ida"></a>三、在linux中安装ida</h4><p><code>wine</code>安装（官网）–&gt;安装ida(不安装python27 x64)–&gt;下载 Python 2.7 的 MSI 文件，命令行下执行：<code>wine64 msiexec /i python-2.7.15.amd64.msi</code><br>wine安装的文件在<code>/home/.wine/drive_c/</code>中，这个相当与windows的c盘</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;一、几个概念&quot;&gt;&lt;a href=&quot;#一、几个概念&quot; class=&quot;headerlink&quot; title=&quot;一、几个概念&quot;&gt;&lt;/a&gt;一、几个概念&lt;/h4&gt;&lt;h5 id=&quot;1-反汇编与反编译&quot;&gt;&lt;a href=&quot;#1-反汇编与反编译&quot; class=&quot;headerlink
       
     
     </summary>
@@ -200,33 +200,6 @@
   </entry>
   
   <entry>
-    <title>逆向题--逆向找出正确的flagre2</title>
-    <link href="https://life0sfc.github.io/2019/02/03/%E9%80%86%E5%90%91%E9%A2%98--%E9%80%86%E5%90%91%E6%89%BE%E5%87%BA%E6%AD%A3%E7%A1%AE%E7%9A%84flagre2/"/>
-    <id>https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/</id>
-    <published>2019-02-03T09:05:32.163Z</published>
-    <updated>2018-10-14T03:38:17.805Z</updated>
-    
-    <content type="html"><![CDATA[<h4 id="题目：逆向找出正确的flagre2"><a href="#题目：逆向找出正确的flagre2" class="headerlink" title="题目：逆向找出正确的flagre2"></a>题目：<a href="https://pan.baidu.com/s/1uDEQ0gRUxHETYd_u9M2ghQ" target="_blank" rel="noopener">逆向找出正确的flagre2</a></h4><p>先检查一下<br><img src="https://i.imgur.com/PtuW1uK.png" alt=""><br>没壳，32位的程序</p><p>直接ida分析，查看伪c<br><img src="https://i.imgur.com/dKgCXwO.png" alt=""></p><p>先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现<code>Try again!</code>，没有看到显示成功的字符串，一步一步分析吧！</p><p>进入sub_401032()函数观察<br><img src="https://i.imgur.com/soVffuk.png" alt=""><br>发现进行了异或运算<code>401100h^95h^input的第一个字符</code>，<br>得出return值的范围为<code>401100h~4011FFh</code><br>查看汇编代码</p><p><img src="https://i.imgur.com/cJprtgR.png" alt=""></p><ul><li>1 中将eax放入<code>[ebp+var_1C]</code></li><li>2 与0进行比较，执行后zf=0,不发生跳转</li><li>3 call addr,addr范围为<code>401100h~4011FFh</code></li></ul><p>观察<code>401100h~4011FFh</code>范围内的函数，发现ida没有识别出来，直接create function,<code>sub_401100() sub_401160() sub_4011C0()</code></p><p><img src="https://i.imgur.com/usT4oTV.png" alt=""></p><p><img src="https://i.imgur.com/14BBSUt.png" alt=""></p><p><img src="https://i.imgur.com/jWccMih.png" alt=""></p><p>00h^95h=149</p><p>60h^95h=245</p><p>c0h^95h=85</p><p>这里只有85小于ffh,所以会执行sub_4011C0()函数，打印出<code>o</code>字符，从输入的字符串中去第二个字符，分别于0x8f和^0x401200,范围为<code>0x401200~0x4012ff</code>,与上一次的情况相似，也是三个函数<br><img src="https://i.imgur.com/kMAqdUe.png" alt=""><br><img src="https://i.imgur.com/tUS455v.png" alt=""><br><img src="https://i.imgur.com/e74pipH.png" alt=""></p><p>推测应该是<code>n</code>,我们可以在下面的图中看到字符的引用，可以看到<code>Try again!</code></p><p><img src="https://i.imgur.com/FEsa7AU.png" alt=""><br>这一题的基本逻辑就出来了，输入字符串，取每一位与下面图中数据异或，决定下一个执行的函数并打印出相应的字符。</p><p><img src="https://i.imgur.com/L7Z8yJQ.png" alt=""><br>多次尝试，发现打印字符串应为<code>Congratulate</code>,推出输入的<code>input</code></p><p><img src="https://i.imgur.com/i14WGuZ.png" alt=""></p><p>在这题中ida的伪C代码会让人看不懂，还是直接通过看汇编代码去分析，对于不清晰的指令结合od去做判断。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h4 id=&quot;题目：逆向找出正确的flagre2&quot;&gt;&lt;a href=&quot;#题目：逆向找出正确的flagre2&quot; class=&quot;headerlink&quot; title=&quot;题目：逆向找出正确的flagre2&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://pan.baidu.com/s
-      
-    
-    </summary>
-    
-      <category term="ctf" scheme="https://life0sfc.github.io/categories/ctf/"/>
-    
-    
-      <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
-    
-      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
-    
-  </entry>
-  
-  <entry>
     <title>gdb的使用</title>
     <link href="https://life0sfc.github.io/2019/02/03/gdb%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://life0sfc.github.io/2019/02/03/gdb的使用/</id>
@@ -251,6 +224,33 @@
       <category term="tools" scheme="https://life0sfc.github.io/tags/tools/"/>
     
       <category term="gdb" scheme="https://life0sfc.github.io/tags/gdb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>逆向题--逆向找出正确的flagre2</title>
+    <link href="https://life0sfc.github.io/2019/02/03/%E9%80%86%E5%90%91%E9%A2%98--%E9%80%86%E5%90%91%E6%89%BE%E5%87%BA%E6%AD%A3%E7%A1%AE%E7%9A%84flagre2/"/>
+    <id>https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/</id>
+    <published>2019-02-03T09:05:32.163Z</published>
+    <updated>2018-10-14T03:38:17.805Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="题目：逆向找出正确的flagre2"><a href="#题目：逆向找出正确的flagre2" class="headerlink" title="题目：逆向找出正确的flagre2"></a>题目：<a href="https://pan.baidu.com/s/1uDEQ0gRUxHETYd_u9M2ghQ" target="_blank" rel="noopener">逆向找出正确的flagre2</a></h4><p>先检查一下<br><img src="https://i.imgur.com/PtuW1uK.png" alt=""><br>没壳，32位的程序</p><p>直接ida分析，查看伪c<br><img src="https://i.imgur.com/dKgCXwO.png" alt=""></p><p>先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现<code>Try again!</code>，没有看到显示成功的字符串，一步一步分析吧！</p><p>进入sub_401032()函数观察<br><img src="https://i.imgur.com/soVffuk.png" alt=""><br>发现进行了异或运算<code>401100h^95h^input的第一个字符</code>，<br>得出return值的范围为<code>401100h~4011FFh</code><br>查看汇编代码</p><p><img src="https://i.imgur.com/cJprtgR.png" alt=""></p><ul><li>1 中将eax放入<code>[ebp+var_1C]</code></li><li>2 与0进行比较，执行后zf=0,不发生跳转</li><li>3 call addr,addr范围为<code>401100h~4011FFh</code></li></ul><p>观察<code>401100h~4011FFh</code>范围内的函数，发现ida没有识别出来，直接create function,<code>sub_401100() sub_401160() sub_4011C0()</code></p><p><img src="https://i.imgur.com/usT4oTV.png" alt=""></p><p><img src="https://i.imgur.com/14BBSUt.png" alt=""></p><p><img src="https://i.imgur.com/jWccMih.png" alt=""></p><p>00h^95h=149</p><p>60h^95h=245</p><p>c0h^95h=85</p><p>这里只有85小于ffh,所以会执行sub_4011C0()函数，打印出<code>o</code>字符，从输入的字符串中去第二个字符，分别于0x8f和^0x401200,范围为<code>0x401200~0x4012ff</code>,与上一次的情况相似，也是三个函数<br><img src="https://i.imgur.com/kMAqdUe.png" alt=""><br><img src="https://i.imgur.com/tUS455v.png" alt=""><br><img src="https://i.imgur.com/e74pipH.png" alt=""></p><p>推测应该是<code>n</code>,我们可以在下面的图中看到字符的引用，可以看到<code>Try again!</code></p><p><img src="https://i.imgur.com/FEsa7AU.png" alt=""><br>这一题的基本逻辑就出来了，输入字符串，取每一位与下面图中数据异或，决定下一个执行的函数并打印出相应的字符。</p><p><img src="https://i.imgur.com/L7Z8yJQ.png" alt=""><br>多次尝试，发现打印字符串应为<code>Congratulate</code>,推出输入的<code>input</code></p><p><img src="https://i.imgur.com/i14WGuZ.png" alt=""></p><p>在这题中ida的伪C代码会让人看不懂，还是直接通过看汇编代码去分析，对于不清晰的指令结合od去做判断。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;题目：逆向找出正确的flagre2&quot;&gt;&lt;a href=&quot;#题目：逆向找出正确的flagre2&quot; class=&quot;headerlink&quot; title=&quot;题目：逆向找出正确的flagre2&quot;&gt;&lt;/a&gt;题目：&lt;a href=&quot;https://pan.baidu.com/s
+      
+    
+    </summary>
+    
+      <category term="ctf" scheme="https://life0sfc.github.io/categories/ctf/"/>
+    
+    
+      <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
+    
+      <category term="ctf" scheme="https://life0sfc.github.io/tags/ctf/"/>
     
   </entry>
   
