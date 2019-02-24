@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://life0sfc.github.io/"/>
-  <updated>2019-02-24T05:33:42.016Z</updated>
+  <updated>2019-02-24T05:37:43.736Z</updated>
   <id>https://life0sfc.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
@@ -16,7 +16,7 @@
     <link href="https://life0sfc.github.io/2019/02/24/linux%E4%B8%AD%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7/"/>
     <id>https://life0sfc.github.io/2019/02/24/linux中命令行工具/</id>
     <published>2019-02-24T05:10:36.000Z</published>
-    <updated>2019-02-24T05:33:42.016Z</updated>
+    <updated>2019-02-24T05:37:43.736Z</updated>
     
     <content type="html"><![CDATA[<p>最近在搞<code>restAPI</code>所以就想写一下<code>curl</code>的内容，起这个名字是为了以后填坑~~~</p><h4 id="一、curl（postman与之类似）"><a href="#一、curl（postman与之类似）" class="headerlink" title="一、curl（postman与之类似）"></a>一、curl（postman与之类似）</h4><p>参数</p><pre><code>-H/--header &lt;line&gt;   自定义头信息传递给服务器-X/--request &lt;command&gt;    指定什么命令-d/--data &lt;data&gt;     HTTP POST方式传送数据-o（小写的 o）：结果会被保存到命令行中提供的文件名-O（大写的 O）：URL 中的文件名会被用作保存输出的文件名</code></pre><p>使用curl发送GET请求</p><pre><code>curl protocol://address:port/url?args</code></pre><p>使用curl发送POST请求：</p><pre><code>curl -d &quot;args&quot; protocol://address:port/url</code></pre><p>需将输出指定到文件可以通过重定向进行操作.</p><pre><code>curl -H &quot;Content-Type:application/json&quot; -X POST -d &apos;json data&apos; URL       //POST 请求，-d 用于指定发送的数据，-X 用于指定发送数据的方式</code></pre><p>eg：</p><pre><code>curl -X POST -H &quot;Content-Type: application/json&quot; -d &apos;{&quot;sender&quot;: &quot;d4ee26eee15148ee92c6cd394edd974e&quot;,&quot;recipient&quot;: &quot;someone-other-address&quot;,&quot;amount&quot;: 5}&apos; &quot;http://localhost:5000/transactions/new&quot;</code></pre><h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><blockquote><p><a href="http://www.codebelief.com/article/2017/05/linux-command-line-curl-usage/" target="_blank" rel="noopener">http://www.codebelief.com/article/2017/05/linux-command-line-curl-usage/</a></p></blockquote>]]></content>
     
@@ -33,7 +33,7 @@
       <category term="linux" scheme="https://life0sfc.github.io/categories/linux/"/>
     
     
-      <category term="tools" scheme="https://life0sfc.github.io/tags/tools/"/>
+      <category term="curl" scheme="https://life0sfc.github.io/tags/curl/"/>
     
   </entry>
   
