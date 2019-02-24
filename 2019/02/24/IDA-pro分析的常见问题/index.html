@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="reverse,ctf,">
+  <meta name="keywords" content="tools,IDA pro,">
 
 
 
@@ -81,32 +81,18 @@
 
 
 
-<meta name="description" content="题目：逆向找出正确的flagre2先检查一下没壳，32位的程序 直接ida分析，查看伪c 先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现Try again!，没有看到显示成功的字符串，一步一步分析吧！ 进入sub_401032()函数观察发现进行了异或运算401100h^95h^input的第一个字符，得出return值的范围为4">
-<meta name="keywords" content="reverse,ctf">
+<meta name="description" content="1、call analysis failed   由于F5在分析调用时，未能成功解析参数位置/参数个数，   解决方法：就是先undefine掉函数，在右键现在code,之后Creat function 就可以正常反编译了 2、出现sp不平衡的问题，造成F5失效ida出错 411A04: positive sp value has been found 出现问题的原因一般是程序代码有一些干扰代码，">
+<meta name="keywords" content="tools,IDA pro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="逆向题--逆向找出正确的flagre2">
-<meta property="og:url" content="https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/index.html">
+<meta property="og:title" content="IDA pro分析的常见问题">
+<meta property="og:url" content="https://life0sfc.github.io/2019/02/24/IDA-pro分析的常见问题/index.html">
 <meta property="og:site_name" content="life0sfc">
-<meta property="og:description" content="题目：逆向找出正确的flagre2先检查一下没壳，32位的程序 直接ida分析，查看伪c 先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现Try again!，没有看到显示成功的字符串，一步一步分析吧！ 进入sub_401032()函数观察发现进行了异或运算401100h^95h^input的第一个字符，得出return值的范围为4">
+<meta property="og:description" content="1、call analysis failed   由于F5在分析调用时，未能成功解析参数位置/参数个数，   解决方法：就是先undefine掉函数，在右键现在code,之后Creat function 就可以正常反编译了 2、出现sp不平衡的问题，造成F5失效ida出错 411A04: positive sp value has been found 出现问题的原因一般是程序代码有一些干扰代码，">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://i.imgur.com/PtuW1uK.png">
-<meta property="og:image" content="https://i.imgur.com/dKgCXwO.png">
-<meta property="og:image" content="https://i.imgur.com/soVffuk.png">
-<meta property="og:image" content="https://i.imgur.com/cJprtgR.png">
-<meta property="og:image" content="https://i.imgur.com/usT4oTV.png">
-<meta property="og:image" content="https://i.imgur.com/14BBSUt.png">
-<meta property="og:image" content="https://i.imgur.com/jWccMih.png">
-<meta property="og:image" content="https://i.imgur.com/kMAqdUe.png">
-<meta property="og:image" content="https://i.imgur.com/tUS455v.png">
-<meta property="og:image" content="https://i.imgur.com/e74pipH.png">
-<meta property="og:image" content="https://i.imgur.com/FEsa7AU.png">
-<meta property="og:image" content="https://i.imgur.com/L7Z8yJQ.png">
-<meta property="og:image" content="https://i.imgur.com/i14WGuZ.png">
-<meta property="og:updated_time" content="2018-10-14T03:38:17.805Z">
+<meta property="og:updated_time" content="2019-02-24T05:50:17.080Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="逆向题--逆向找出正确的flagre2">
-<meta name="twitter:description" content="题目：逆向找出正确的flagre2先检查一下没壳，32位的程序 直接ida分析，查看伪c 先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现Try again!，没有看到显示成功的字符串，一步一步分析吧！ 进入sub_401032()函数观察发现进行了异或运算401100h^95h^input的第一个字符，得出return值的范围为4">
-<meta name="twitter:image" content="https://i.imgur.com/PtuW1uK.png">
+<meta name="twitter:title" content="IDA pro分析的常见问题">
+<meta name="twitter:description" content="1、call analysis failed   由于F5在分析调用时，未能成功解析参数位置/参数个数，   解决方法：就是先undefine掉函数，在右键现在code,之后Creat function 就可以正常反编译了 2、出现sp不平衡的问题，造成F5失效ida出错 411A04: positive sp value has been found 出现问题的原因一般是程序代码有一些干扰代码，">
 
 
 
@@ -136,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/">
+  <link rel="canonical" href="https://life0sfc.github.io/2019/02/24/IDA-pro分析的常见问题/">
 
 
 
 
 
-  <title>逆向题--逆向找出正确的flagre2 | life0sfc</title>
+  <title>IDA pro分析的常见问题 | life0sfc</title>
   
 
 
@@ -289,7 +275,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/">
+    <link itemprop="mainEntityOfPage" href="https://life0sfc.github.io/2019/02/24/IDA-pro分析的常见问题/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -306,7 +292,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">逆向题--逆向找出正确的flagre2</h1>
+          <h1 class="post-title" itemprop="name headline">IDA pro分析的常见问题</h1>
         
 
         <div class="post-meta">
@@ -318,8 +304,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-03T17:05:32+08:00">
-                2019-02-03
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-02-24T13:47:32+08:00">
+                2019-02-24
               </time>
             
 
@@ -341,8 +327,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/ctf/" itemprop="url" rel="index">
-                    <span itemprop="name">ctf</span>
+                  <a href="/categories/reverse/" itemprop="url" rel="index">
+                    <span itemprop="name">reverse</span>
                   </a>
                 </span>
 
@@ -359,8 +345,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/03/逆向题--逆向找出正确的flagre2/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/03/逆向题--逆向找出正确的flagre2/" itemprop="commentCount"></span>
+                <a href="/2019/02/24/IDA-pro分析的常见问题/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/24/IDA-pro分析的常见问题/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -368,7 +354,7 @@
 
           
           
-             <span id="/2019/02/03/逆向题--逆向找出正确的flagre2/" class="leancloud_visitors" data-flag-title="逆向题--逆向找出正确的flagre2">
+             <span id="/2019/02/24/IDA-pro分析的常见问题/" class="leancloud_visitors" data-flag-title="IDA pro分析的常见问题">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -393,7 +379,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  400
+                  529
                 </span>
               
 
@@ -418,29 +404,41 @@
       
 
       
-        <h4 id="题目：逆向找出正确的flagre2"><a href="#题目：逆向找出正确的flagre2" class="headerlink" title="题目：逆向找出正确的flagre2"></a>题目：<a href="https://pan.baidu.com/s/1uDEQ0gRUxHETYd_u9M2ghQ" target="_blank" rel="noopener">逆向找出正确的flagre2</a></h4><p>先检查一下<br><img src="https://i.imgur.com/PtuW1uK.png" alt=""><br>没壳，32位的程序</p>
-<p>直接ida分析，查看伪c<br><img src="https://i.imgur.com/dKgCXwO.png" alt=""></p>
-<p>先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现<code>Try again!</code>，没有看到显示成功的字符串，一步一步分析吧！</p>
-<p>进入sub_401032()函数观察<br><img src="https://i.imgur.com/soVffuk.png" alt=""><br>发现进行了异或运算<code>401100h^95h^input的第一个字符</code>，<br>得出return值的范围为<code>401100h~4011FFh</code><br>查看汇编代码</p>
-<p><img src="https://i.imgur.com/cJprtgR.png" alt=""></p>
+        <h4 id="1、call-analysis-failed"><a href="#1、call-analysis-failed" class="headerlink" title="1、call analysis failed"></a>1、call analysis failed</h4><p>   由于F5在分析调用时，未能成功解析参数位置/参数个数，<br>   解决方法：就是先undefine掉函数，在右键现在code,之后Creat function 就可以正常反编译了</p>
+<h4 id="2、出现sp不平衡的问题，造成F5失效"><a href="#2、出现sp不平衡的问题，造成F5失效" class="headerlink" title="2、出现sp不平衡的问题，造成F5失效"></a>2、出现sp不平衡的问题，造成F5失效</h4><p>ida出错</p>
+<pre><code>411A04: positive sp value has been found
+</code></pre><p>出现问题的原因一般是程序代码有一些干扰代码，让IDA的反汇编分析出现错误。比如用push + n条指令 + retn来实际跳转，而IDA会以为retn是函数要结束，结果它分析后发现调用栈不平衡，因此就提示sp analysis failed.</p>
+<p>具体出现的问题</p>
+<pre><code>.text:0041194C 0DC         lea edi, [ebp+var_CC]
+.text:00411952 0DC         mov ecx, 33h
+.text:00411957 0DC         mov eax, 0CCCCCCCCh
+.text:0041195C 0DC         rep stosd
+.text:0041195E 0DC         mov eax, [ebp+arg_0]
+.text:00411961 0DC         add eax, [ebp+arg_4]
+.text:00411964 0DC         mov cl, [eax]
+.text:00411966 0DC         mov [ebp+var_5], cl
+.text:00411969 0DC         push eax
+.text:0041196A 0E0         xor eax, eax
+.text:0041196C 0E0         jz  short loc_411971
+.text:0041196E 0E0         add esp, 8
+.text:00411971
+.text:00411971 loc_411971: ;         CODE XREF: sub_411940+2C↑j
+
+.text:00411971 0D8         pop eax //sp偏移出错
+.text:00411972 0D4         movsx   eax, [ebp+var_5]
+.text:00411976 0D4         cmp eax, 61h
+.text:00411979 0D4         jl  short loc_411984
+.text:0041197B 0D4         movsx   eax, [ebp+var_5]
+.text:0041197F 0D4         cmp eax, 7Ah
+</code></pre><p>解决方法</p>
 <ul>
-<li>1 中将eax放入<code>[ebp+var_1C]</code></li>
-<li>2 与0进行比较，执行后zf=0,不发生跳转</li>
-<li>3 call addr,addr范围为<code>401100h~4011FFh</code></li>
+<li>1）用Option-&gt;General-&gt;Disassembly, 将选项Stack pointer打勾</li>
+<li>2）仔细观察每条call sub_xxxxxx前后的堆栈指针是否平衡；使用alt+k调节sp的偏移值</li>
+<li>3）有时还要看被调用的sub_xxxxxx内部的堆栈情况，主要是看入栈的参数与ret xx是否匹配；</li>
+<li>4）注意观察jmp指令前后的堆栈是否有变化；</li>
+<li>5）有时用Edit-&gt;Functions-&gt;Edit function…,然后点击OK，(按D再按C键)刷一下函数定义。</li>
 </ul>
-<p>观察<code>401100h~4011FFh</code>范围内的函数，发现ida没有识别出来，直接create function,<code>sub_401100() sub_401160() sub_4011C0()</code></p>
-<p><img src="https://i.imgur.com/usT4oTV.png" alt=""></p>
-<p><img src="https://i.imgur.com/14BBSUt.png" alt=""></p>
-<p><img src="https://i.imgur.com/jWccMih.png" alt=""></p>
-<p>00h^95h=149</p>
-<p>60h^95h=245</p>
-<p>c0h^95h=85</p>
-<p>这里只有85小于ffh,所以会执行sub_4011C0()函数，打印出<code>o</code>字符，从输入的字符串中去第二个字符，分别于0x8f和^0x401200,范围为<code>0x401200~0x4012ff</code>,与上一次的情况相似，也是三个函数<br><img src="https://i.imgur.com/kMAqdUe.png" alt=""><br><img src="https://i.imgur.com/tUS455v.png" alt=""><br><img src="https://i.imgur.com/e74pipH.png" alt=""></p>
-<p>推测应该是<code>n</code>,我们可以在下面的图中看到字符的引用，可以看到<code>Try again!</code></p>
-<p><img src="https://i.imgur.com/FEsa7AU.png" alt=""><br>这一题的基本逻辑就出来了，输入字符串，取每一位与下面图中数据异或，决定下一个执行的函数并打印出相应的字符。</p>
-<p><img src="https://i.imgur.com/L7Z8yJQ.png" alt=""><br>多次尝试，发现打印字符串应为<code>Congratulate</code>,推出输入的<code>input</code></p>
-<p><img src="https://i.imgur.com/i14WGuZ.png" alt=""></p>
-<p>在这题中ida的伪C代码会让人看不懂，还是直接通过看汇编代码去分析，对于不清晰的指令结合od去做判断。</p>
+<p>针对每一条指令执行完后,看栈是否正常,如果不对,则通过ALT + K来修改.重点检查虚函数的调用, 如call [esi + n] , 这里不一定非得是esi,以及跳转前后的栈是否一致.另外还需要通过ALT + P 来确认下变量起始地址,清除个数与保存个数是否正常.<br>参考链接：<br><a href="https://blog.csdn.net/wjcsharp/article/details/11075993" target="_blank" rel="noopener">https://blog.csdn.net/wjcsharp/article/details/11075993</a></p>
 
       
     </div>
@@ -461,7 +459,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>Post link:</strong>
-    <a href="https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/" title="逆向题--逆向找出正确的flagre2">https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/</a>
+    <a href="https://life0sfc.github.io/2019/02/24/IDA-pro分析的常见问题/" title="IDA pro分析的常见问题">https://life0sfc.github.io/2019/02/24/IDA-pro分析的常见问题/</a>
   </li>
   <li class="post-copyright-license">
     <strong>Copyright Notice: </strong>
@@ -476,9 +474,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/reverse/" rel="tag"># reverse</a>
+            <a href="/tags/tools/" rel="tag"># tools</a>
           
-            <a href="/tags/ctf/" rel="tag"># ctf</a>
+            <a href="/tags/IDA-pro/" rel="tag"># IDA pro</a>
           
         </div>
       
@@ -491,8 +489,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/03/搭建一个blog/" rel="next" title="搭建一个blog">
-                <i class="fa fa-chevron-left"></i> 搭建一个blog
+              <a href="/2019/02/24/linux中命令行工具/" rel="next" title="linux中命令行工具">
+                <i class="fa fa-chevron-left"></i> linux中命令行工具
               </a>
             
           </div>
@@ -501,8 +499,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/02/03/gdb的使用/" rel="prev" title="gdb的使用">
-                gdb的使用 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/02/24/IDA pro-静态分析/" rel="prev" title="IDA pro 静态分析.md">
+                IDA pro 静态分析.md <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -669,7 +667,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#题目：逆向找出正确的flagre2"><span class="nav-text">题目：逆向找出正确的flagre2</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1、call-analysis-failed"><span class="nav-text">1、call analysis failed</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2、出现sp不平衡的问题，造成F5失效"><span class="nav-text">2、出现sp不平衡的问题，造成F5失效</span></a></li></ol></div>
             
 
           </div>
