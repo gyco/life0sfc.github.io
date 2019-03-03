@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="life0sfc">
 <meta property="og:description" content="本文记录了我学习前端的一些知识，不是学习前端的教程，在文章的第四点列出了我推荐的一些资源。 首先前端是什么？可能你会说前端就是html/css/js，就是我们看到的页面，这样说可能不太准确，前端指的是用于用户响应的部分，它是由html/css/js组成的，下面我列出了它们在页面中所起到的作用。  html—结构(structure):比如你看到的文字或图片。 css—样式(presentation">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-03T03:04:20.515Z">
+<meta property="og:updated_time" content="2019-03-03T03:13:54.937Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="前端学习小结">
 <meta name="twitter:description" content="本文记录了我学习前端的一些知识，不是学习前端的教程，在文章的第四点列出了我推荐的一些资源。 首先前端是什么？可能你会说前端就是html/css/js，就是我们看到的页面，这样说可能不太准确，前端指的是用于用户响应的部分，它是由html/css/js组成的，下面我列出了它们在页面中所起到的作用。  html—结构(structure):比如你看到的文字或图片。 css—样式(presentation">
@@ -379,7 +379,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1.1k
+                  1.2k
                 </span>
               
 
@@ -429,14 +429,20 @@
 &lt;q&gt; 引用，加引号
 &lt;div&gt; 元素的 HTML 布局
 &lt;a href=&quot;url&quot;&gt;Link text&lt;/a&gt;   超链接
-</code></pre><h4 id="二、CSS"><a href="#二、CSS" class="headerlink" title="二、CSS"></a>二、CSS</h4><h5 id="2-1-在html中引入CSS"><a href="#2-1-在html中引入CSS" class="headerlink" title="2.1 在html中引入CSS"></a>2.1 在html中引入CSS</h5><pre><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;theme.css&quot; /&gt;     //rel=&quot;stylesheet&quot;表明这是文档的样式表，而 href包含了样式表文件的路径
+</code></pre><h4 id="二、CSS"><a href="#二、CSS" class="headerlink" title="二、CSS"></a>二、CSS</h4><h5 id="2-1-在html中引入CSS"><a href="#2-1-在html中引入CSS" class="headerlink" title="2.1 在html中引入CSS"></a>2.1 在html中引入CSS</h5><pre><code>&lt;style type=&quot;text/css&quot;&gt;     //使用&lt;style&gt;直接在html文件中写css   
+    h1 {color:red}
+    p {color:blue}
+&lt;/style&gt;
+
+&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;theme.css&quot; /&gt;     //引入css文件，rel=&quot;stylesheet&quot;表明这是文档的样式表，而 href包含了样式表文件的路径
 </code></pre><h5 id="2-2-选择器"><a href="#2-2-选择器" class="headerlink" title="2.2 选择器"></a>2.2 选择器</h5><p>简单选择器：通过元素类型、class 或 id 匹配一个或多个元素。</p>
 <ul>
 <li>元素选择器：只是一个选择器名和指定的HTML元素名的不区分大小写的匹配。</li>
 <li>类选择器：由一个点“.”以及类后面的类名组成。</li>
 <li>ID选择器：由哈希/磅符号 (#)组成，后面是给定元素的ID名称。任何元素都可以使用id属性设置唯一的ID名称。</li>
-<li>通用选择器：(*)它允许选择在一个页面中的所有元素。<h4 id="三、JavaScript"><a href="#三、JavaScript" class="headerlink" title="三、JavaScript"></a>三、JavaScript</h4>可插入 HTML 页面的轻量级的编程语言，弱类型语言，对大小写敏感。</li>
+<li>通用选择器：(*)它允许选择在一个页面中的所有元素。</li>
 </ul>
+<h4 id="三、JavaScript"><a href="#三、JavaScript" class="headerlink" title="三、JavaScript"></a>三、JavaScript</h4><p>可插入 HTML 页面的轻量级的编程语言，弱类型语言，对大小写敏感。</p>
 <h5 id="3-1-在html中插入js"><a href="#3-1-在html中插入js" class="headerlink" title="3.1 在html中插入js"></a>3.1 在html中插入js</h5><pre><code>&lt;script&gt;javascript&lt;/script&gt;     //直接写在html文件中
 &lt;script type=&quot;text/javascript&quot; src=&quot;/js/myScript.js&quot;&gt;&lt;/script&gt;  //外部使用js代码，在html5可不指定type
 </code></pre><h5 id="3-2-js中函数的创建"><a href="#3-2-js中函数的创建" class="headerlink" title="3.2 js中函数的创建"></a>3.2 js中函数的创建</h5><p>JavaScript中，函数及变量的声明都将被提升到函数的最顶部。</p>
@@ -539,8 +545,8 @@ console.log(obj1 [, obj2, ..., objN);
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/02/24/IDA pro-静态分析/" rel="next" title="IDA pro 静态分析">
-                <i class="fa fa-chevron-left"></i> IDA pro 静态分析
+              <a href="/2019/02/24/IDA-pro分析的常见问题/" rel="next" title="IDA pro分析的常见问题">
+                <i class="fa fa-chevron-left"></i> IDA pro分析的常见问题
               </a>
             
           </div>
