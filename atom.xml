@@ -6,35 +6,36 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://life0sfc.github.io/"/>
-  <updated>2019-02-24T05:50:17.080Z</updated>
+  <updated>2019-03-03T03:04:20.515Z</updated>
   <id>https://life0sfc.github.io/</id>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>IDA pro分析的常见问题</title>
-    <link href="https://life0sfc.github.io/2019/02/24/IDA-pro%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
-    <id>https://life0sfc.github.io/2019/02/24/IDA-pro分析的常见问题/</id>
-    <published>2019-02-24T05:47:32.000Z</published>
-    <updated>2019-02-24T05:50:17.080Z</updated>
+    <title>前端学习小结</title>
+    <link href="https://life0sfc.github.io/2019/03/03/%E5%89%8D%E7%AB%AF%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/"/>
+    <id>https://life0sfc.github.io/2019/03/03/前端学习小结/</id>
+    <published>2019-03-03T03:01:27.000Z</published>
+    <updated>2019-03-03T03:04:20.515Z</updated>
     
-    <content type="html"><![CDATA[<h4 id="1、call-analysis-failed"><a href="#1、call-analysis-failed" class="headerlink" title="1、call analysis failed"></a>1、call analysis failed</h4><p>   由于F5在分析调用时，未能成功解析参数位置/参数个数，<br>   解决方法：就是先undefine掉函数，在右键现在code,之后Creat function 就可以正常反编译了</p><h4 id="2、出现sp不平衡的问题，造成F5失效"><a href="#2、出现sp不平衡的问题，造成F5失效" class="headerlink" title="2、出现sp不平衡的问题，造成F5失效"></a>2、出现sp不平衡的问题，造成F5失效</h4><p>ida出错</p><pre><code>411A04: positive sp value has been found</code></pre><p>出现问题的原因一般是程序代码有一些干扰代码，让IDA的反汇编分析出现错误。比如用push + n条指令 + retn来实际跳转，而IDA会以为retn是函数要结束，结果它分析后发现调用栈不平衡，因此就提示sp analysis failed.</p><p>具体出现的问题</p><pre><code>.text:0041194C 0DC         lea edi, [ebp+var_CC].text:00411952 0DC         mov ecx, 33h.text:00411957 0DC         mov eax, 0CCCCCCCCh.text:0041195C 0DC         rep stosd.text:0041195E 0DC         mov eax, [ebp+arg_0].text:00411961 0DC         add eax, [ebp+arg_4].text:00411964 0DC         mov cl, [eax].text:00411966 0DC         mov [ebp+var_5], cl.text:00411969 0DC         push eax.text:0041196A 0E0         xor eax, eax.text:0041196C 0E0         jz  short loc_411971.text:0041196E 0E0         add esp, 8.text:00411971.text:00411971 loc_411971: ;         CODE XREF: sub_411940+2C↑j.text:00411971 0D8         pop eax //sp偏移出错.text:00411972 0D4         movsx   eax, [ebp+var_5].text:00411976 0D4         cmp eax, 61h.text:00411979 0D4         jl  short loc_411984.text:0041197B 0D4         movsx   eax, [ebp+var_5].text:0041197F 0D4         cmp eax, 7Ah</code></pre><p>解决方法</p><ul><li>1）用Option-&gt;General-&gt;Disassembly, 将选项Stack pointer打勾</li><li>2）仔细观察每条call sub_xxxxxx前后的堆栈指针是否平衡；使用alt+k调节sp的偏移值</li><li>3）有时还要看被调用的sub_xxxxxx内部的堆栈情况，主要是看入栈的参数与ret xx是否匹配；</li><li>4）注意观察jmp指令前后的堆栈是否有变化；</li><li>5）有时用Edit-&gt;Functions-&gt;Edit function…,然后点击OK，(按D再按C键)刷一下函数定义。</li></ul><p>针对每一条指令执行完后,看栈是否正常,如果不对,则通过ALT + K来修改.重点检查虚函数的调用, 如call [esi + n] , 这里不一定非得是esi,以及跳转前后的栈是否一致.另外还需要通过ALT + P 来确认下变量起始地址,清除个数与保存个数是否正常.<br>参考链接：<br><a href="https://blog.csdn.net/wjcsharp/article/details/11075993" target="_blank" rel="noopener">https://blog.csdn.net/wjcsharp/article/details/11075993</a></p>]]></content>
+    <content type="html"><![CDATA[<p>本文记录了我学习前端的一些知识，不是学习前端的教程，在文章的第四点列出了我推荐的一些资源。</p><p>首先前端是什么？可能你会说前端就是html/css/js，就是我们看到的页面，这样说可能不太准确，前端指的是用于用户响应的部分，它是由html/css/js组成的，下面我列出了它们在页面中所起到的作用。</p><ul><li>html—结构(structure):比如你看到的文字或图片。</li><li>css—样式(presentation)：你看到的文字或图片以什么样的格式显示的，如字体的颜色等等。</li><li>js—行为(behavior)：它定义了网页中的动态行为。</li></ul><h4 id="一、html"><a href="#一、html" class="headerlink" title="一、html"></a>一、html</h4><p>html是一种标签语言，主要格式如下</p><pre><code>&lt;p class=&quot;id&quot;&gt;helloworld&lt;/p&gt;</code></pre><ul><li>元素():开始标记，加结束标记，加内容，等于元素。</li><li>标签(tag):&lt;p>为开始标签，&lt;/p>为结束标签</li><li>属性(attribute):包含元素的额外信息，这些信息不会出现在实际的内容中，标签的属性定义了与文档相关联的名称/值对。</li><li>内容(content):可显示的部分，对应上面元素的<code>helloworld</code></li></ul><p>html主体分为两大部分</p><pre><code>&lt;head&gt;&lt;/head&gt;  //head标签内的内容不会在浏览器中显示，它的作用是包含一些页面的元数据。&lt;body&gt;&lt;/body&gt;  //body标签内的内容是整个页面的显示部分</code></pre><p>其他常见的标签</p><pre><code>&lt;!DOCTYPE html&gt; &lt;!-- 使用 HTML5 doctype，不区分大小写 --&gt;&lt;h1&gt;-&lt;h6&gt; 标题（由大到小）&lt;p&gt; 段落 &lt;b&gt;加粗&lt;/b&gt;&lt;q&gt; 引用，加引号&lt;div&gt; 元素的 HTML 布局&lt;a href=&quot;url&quot;&gt;Link text&lt;/a&gt;   超链接</code></pre><h4 id="二、CSS"><a href="#二、CSS" class="headerlink" title="二、CSS"></a>二、CSS</h4><h5 id="2-1-在html中引入CSS"><a href="#2-1-在html中引入CSS" class="headerlink" title="2.1 在html中引入CSS"></a>2.1 在html中引入CSS</h5><pre><code>&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;theme.css&quot; /&gt;     //rel=&quot;stylesheet&quot;表明这是文档的样式表，而 href包含了样式表文件的路径</code></pre><h5 id="2-2-选择器"><a href="#2-2-选择器" class="headerlink" title="2.2 选择器"></a>2.2 选择器</h5><p>简单选择器：通过元素类型、class 或 id 匹配一个或多个元素。</p><ul><li>元素选择器：只是一个选择器名和指定的HTML元素名的不区分大小写的匹配。</li><li>类选择器：由一个点“.”以及类后面的类名组成。</li><li>ID选择器：由哈希/磅符号 (#)组成，后面是给定元素的ID名称。任何元素都可以使用id属性设置唯一的ID名称。</li><li>通用选择器：(*)它允许选择在一个页面中的所有元素。<h4 id="三、JavaScript"><a href="#三、JavaScript" class="headerlink" title="三、JavaScript"></a>三、JavaScript</h4>可插入 HTML 页面的轻量级的编程语言，弱类型语言，对大小写敏感。</li></ul><h5 id="3-1-在html中插入js"><a href="#3-1-在html中插入js" class="headerlink" title="3.1 在html中插入js"></a>3.1 在html中插入js</h5><pre><code>&lt;script&gt;javascript&lt;/script&gt;     //直接写在html文件中&lt;script type=&quot;text/javascript&quot; src=&quot;/js/myScript.js&quot;&gt;&lt;/script&gt;  //外部使用js代码，在html5可不指定type</code></pre><h5 id="3-2-js中函数的创建"><a href="#3-2-js中函数的创建" class="headerlink" title="3.2 js中函数的创建"></a>3.2 js中函数的创建</h5><p>JavaScript中，函数及变量的声明都将被提升到函数的最顶部。</p><p>函数声明：</p><pre><code>function fuctionname(){}//声明式会导致函数提升，function会被解释器优先编译</code></pre><p>函数表达式</p><pre><code>var fnName = function () {…}   //不会出现函数提升，JS解释器逐行解释，如果调用在函数表达式之前，则会调用失败。</code></pre><p>匿名函数：<code>function () {}</code></p><p>自调用函数：平常的<code>function(){}</code>则是一种声明式，如果加上()括号后，则会被编译器认为是函数表达式，从而可以用()来直接调用</p><pre><code>(fuction(){    return 1;})();</code></pre><p>常见调试函数</p><pre><code>alert()console.log(obj1 [, obj2, ..., objN);</code></pre><h5 id="3-3-AJAX"><a href="#3-3-AJAX" class="headerlink" title="3.3 AJAX"></a>3.3 AJAX</h5><p><code>AJAX</code>是一种用于创建快速动态网页的技术。使网页实现异步更新</p><p>jQuery.ajax([settings])   <---> $.ajax()函数依赖服务器提供的信息来处理返回的数据。</---></p><p>下面给个实例：</p><pre><code>$.ajax({                type:&quot;get&quot;,                url:&quot;http://api.mayitours.com/test?user=nmd&amp;&amp;token=d6560343554db3bed50bf4a23ce2f6&amp;&amp;stock_name=sh601006&quot;,                dataType:&quot;json&quot;,                async:false,                success:function(data){    //当请求之后调用                    console.log(data);                    elements[1] = data[&apos;sale&apos;]; //今日售价                    elements[2] = data[&apos;buy&apos;];                    elements[3] = data[&apos;current_price&apos;];//当前价格                    elements[4] = data[&apos;quantity&apos;];                    },                error:function(){                    alert(&quot;wrong&quot;);                }                });;为可选项</code></pre><p>简单的来说，ajax就是在你设定的时间间断后对于特定的url进行访问，做到实时更新网页上的数据。</p><h4 id="四、资源"><a href="#四、资源" class="headerlink" title="四、资源"></a>四、资源</h4><p>学习Web :</p><blockquote><p><a href="https://developer.mozilla.org/zh-CN/docs/learn" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/learn</a></p></blockquote><blockquote><p><a href="http://www.w3school.com.cn/" target="_blank" rel="noopener">http://www.w3school.com.cn/</a></p></blockquote><p>前端调试（包括fiddler、F12）</p><blockquote><p><a href="https://www.zhihu.com/question/35667558/answer/63936233" target="_blank" rel="noopener">https://www.zhihu.com/question/35667558/answer/63936233</a></p></blockquote><p>vscode中文文档</p><blockquote><p><a href="https://legacy.gitbook.com/book/jeasonstudio/vscode-cn-doc/details" target="_blank" rel="noopener">https://legacy.gitbook.com/book/jeasonstudio/vscode-cn-doc/details</a></p></blockquote>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h4 id=&quot;1、call-analysis-failed&quot;&gt;&lt;a href=&quot;#1、call-analysis-failed&quot; class=&quot;headerlink&quot; title=&quot;1、call analysis failed&quot;&gt;&lt;/a&gt;1、call analysis fail
+        &lt;p&gt;本文记录了我学习前端的一些知识，不是学习前端的教程，在文章的第四点列出了我推荐的一些资源。&lt;/p&gt;
+&lt;p&gt;首先前端是什么？可能你会说前端就是html/css/js，就是我们看到的页面，这样说可能不太准确，前端指的是用于用户响应的部分，它是由html/css/js组成的，下面
       
     
     </summary>
     
-      <category term="reverse" scheme="https://life0sfc.github.io/categories/reverse/"/>
+      <category term="Web" scheme="https://life0sfc.github.io/categories/Web/"/>
     
     
-      <category term="tools" scheme="https://life0sfc.github.io/tags/tools/"/>
+      <category term="小记" scheme="https://life0sfc.github.io/tags/%E5%B0%8F%E8%AE%B0/"/>
     
-      <category term="IDA pro" scheme="https://life0sfc.github.io/tags/IDA-pro/"/>
+      <category term="js" scheme="https://life0sfc.github.io/tags/js/"/>
     
   </entry>
   
@@ -52,6 +53,33 @@
       
       
         &lt;h4 id=&quot;一、几个概念&quot;&gt;&lt;a href=&quot;#一、几个概念&quot; class=&quot;headerlink&quot; title=&quot;一、几个概念&quot;&gt;&lt;/a&gt;一、几个概念&lt;/h4&gt;&lt;h5 id=&quot;1-反汇编与反编译&quot;&gt;&lt;a href=&quot;#1-反汇编与反编译&quot; class=&quot;headerlink
+      
+    
+    </summary>
+    
+      <category term="reverse" scheme="https://life0sfc.github.io/categories/reverse/"/>
+    
+    
+      <category term="tools" scheme="https://life0sfc.github.io/tags/tools/"/>
+    
+      <category term="IDA pro" scheme="https://life0sfc.github.io/tags/IDA-pro/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>IDA pro分析的常见问题</title>
+    <link href="https://life0sfc.github.io/2019/02/24/IDA-pro%E5%88%86%E6%9E%90%E7%9A%84%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/"/>
+    <id>https://life0sfc.github.io/2019/02/24/IDA-pro分析的常见问题/</id>
+    <published>2019-02-24T05:47:32.000Z</published>
+    <updated>2019-02-24T05:50:17.080Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="1、call-analysis-failed"><a href="#1、call-analysis-failed" class="headerlink" title="1、call analysis failed"></a>1、call analysis failed</h4><p>   由于F5在分析调用时，未能成功解析参数位置/参数个数，<br>   解决方法：就是先undefine掉函数，在右键现在code,之后Creat function 就可以正常反编译了</p><h4 id="2、出现sp不平衡的问题，造成F5失效"><a href="#2、出现sp不平衡的问题，造成F5失效" class="headerlink" title="2、出现sp不平衡的问题，造成F5失效"></a>2、出现sp不平衡的问题，造成F5失效</h4><p>ida出错</p><pre><code>411A04: positive sp value has been found</code></pre><p>出现问题的原因一般是程序代码有一些干扰代码，让IDA的反汇编分析出现错误。比如用push + n条指令 + retn来实际跳转，而IDA会以为retn是函数要结束，结果它分析后发现调用栈不平衡，因此就提示sp analysis failed.</p><p>具体出现的问题</p><pre><code>.text:0041194C 0DC         lea edi, [ebp+var_CC].text:00411952 0DC         mov ecx, 33h.text:00411957 0DC         mov eax, 0CCCCCCCCh.text:0041195C 0DC         rep stosd.text:0041195E 0DC         mov eax, [ebp+arg_0].text:00411961 0DC         add eax, [ebp+arg_4].text:00411964 0DC         mov cl, [eax].text:00411966 0DC         mov [ebp+var_5], cl.text:00411969 0DC         push eax.text:0041196A 0E0         xor eax, eax.text:0041196C 0E0         jz  short loc_411971.text:0041196E 0E0         add esp, 8.text:00411971.text:00411971 loc_411971: ;         CODE XREF: sub_411940+2C↑j.text:00411971 0D8         pop eax //sp偏移出错.text:00411972 0D4         movsx   eax, [ebp+var_5].text:00411976 0D4         cmp eax, 61h.text:00411979 0D4         jl  short loc_411984.text:0041197B 0D4         movsx   eax, [ebp+var_5].text:0041197F 0D4         cmp eax, 7Ah</code></pre><p>解决方法</p><ul><li>1）用Option-&gt;General-&gt;Disassembly, 将选项Stack pointer打勾</li><li>2）仔细观察每条call sub_xxxxxx前后的堆栈指针是否平衡；使用alt+k调节sp的偏移值</li><li>3）有时还要看被调用的sub_xxxxxx内部的堆栈情况，主要是看入栈的参数与ret xx是否匹配；</li><li>4）注意观察jmp指令前后的堆栈是否有变化；</li><li>5）有时用Edit-&gt;Functions-&gt;Edit function…,然后点击OK，(按D再按C键)刷一下函数定义。</li></ul><p>针对每一条指令执行完后,看栈是否正常,如果不对,则通过ALT + K来修改.重点检查虚函数的调用, 如call [esi + n] , 这里不一定非得是esi,以及跳转前后的栈是否一致.另外还需要通过ALT + P 来确认下变量起始地址,清除个数与保存个数是否正常.<br>参考链接：<br><a href="https://blog.csdn.net/wjcsharp/article/details/11075993" target="_blank" rel="noopener">https://blog.csdn.net/wjcsharp/article/details/11075993</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;1、call-analysis-failed&quot;&gt;&lt;a href=&quot;#1、call-analysis-failed&quot; class=&quot;headerlink&quot; title=&quot;1、call analysis failed&quot;&gt;&lt;/a&gt;1、call analysis fail
       
     
     </summary>
@@ -172,34 +200,6 @@
   </entry>
   
   <entry>
-    <title>abexcrackme#2</title>
-    <link href="https://life0sfc.github.io/2019/02/03/abexcrackme#2/"/>
-    <id>https://life0sfc.github.io/2019/02/03/abexcrackme#2/</id>
-    <published>2019-02-03T09:05:32.163Z</published>
-    <updated>2018-10-14T03:55:51.970Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>实验环境：win xp32位虚拟机</li><li>程序：abexcrackme#2</li><li>实验工具：od<h4 id="破解程序"><a href="#破解程序" class="headerlink" title="破解程序"></a>破解程序</h4></li></ul><p>首先我们先观察一下程序的特征</p><p><img src="https://i.imgur.com/56MoLwG.png" alt=""></p><p>需要输入Name 和 Serial，检验后弹出正确的窗口<br>测试一下</p><p><img src="https://i.imgur.com/sP9pljo.png" alt=""></p><p>使用peid查看发现是VB程序，<br>用od打开</p><p><img src="https://i.imgur.com/rgn6rDv.png" alt=""></p><p>右键–&gt;Search for–&gt;All referenced text strings查看所有字符串<br>找到</p><p><img src="https://i.imgur.com/MgmnP1B.png" alt=""></p><p>进入字符串Congratulation!发现</p><p><img src="https://i.imgur.com/KhZJ3OX.png" alt=""><br>先是移动相关的字符串，然后调用消息框的代码04033BE</p><p>向上观察发现汇编代码中先压入了edx,eax然后call调用了函数，再执行test和je指令<br><img src="https://i.imgur.com/OhHyBDQ.png" alt=""><br>在32位的程序中函数调用时会将参数压入栈中，所以判断call调用的函数是判断字符串是否相等，可以在403321处下断点（F2）在重新开始程序（ctrl+f2），按F9运行程序，观察程序的运行，输入Name,Serial，这里设为123456，abcsdf，程序停在了403321处</p><p>在403329处下断点，按F9继续运行，查看edx,eax值</p><p><img src="https://i.imgur.com/hWQQCbe.png" alt=""></p><p>查看0012F4D4，0012F4C4存储在栈中的内存地址（选定地址–&gt;右键–&gt;Follow in dump）</p><p><img src="https://i.imgur.com/Qq85WlR.png" alt=""><br>此16个字节不是直接显示的字符串，可以使用在dump窗口long-&gt;Address with ASCII dump命令查看</p><p><img src="https://i.imgur.com/pTDoPqn.png" alt=""> </p><p>查看0012F4D4，0012F4C4在栈窗口中的值（Follow in stack）</p><p><img src="https://i.imgur.com/jYTS9Re.png" alt=""></p><p>可以发现eax为用户输入的Serial（VB使用unicode编码），而edx为实际的Serial值</p><p><img src="https://i.imgur.com/ZjjQvEc.png" alt=""></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;实验环境：win xp32位虚拟机&lt;/li&gt;
-&lt;li&gt;程序：abexcrackme#2&lt;/li&gt;
-&lt;li&gt;实验工具：od&lt;h4 id=&quot;破解程序&quot;&gt;&lt;a href=&quot;#破解程序&quot; class=&quot;headerlink&quot; title=&quot;破解程序&quot;&gt;&lt;/a&gt;破解程序&lt;
-      
-    
-    </summary>
-    
-      <category term="reverse" scheme="https://life0sfc.github.io/categories/reverse/"/>
-    
-    
-      <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
-    
-  </entry>
-  
-  <entry>
     <title>gdb的使用</title>
     <link href="https://life0sfc.github.io/2019/02/03/gdb%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://life0sfc.github.io/2019/02/03/gdb的使用/</id>
@@ -224,6 +224,34 @@
       <category term="tools" scheme="https://life0sfc.github.io/tags/tools/"/>
     
       <category term="gdb" scheme="https://life0sfc.github.io/tags/gdb/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>abexcrackme#2</title>
+    <link href="https://life0sfc.github.io/2019/02/03/abexcrackme#2/"/>
+    <id>https://life0sfc.github.io/2019/02/03/abexcrackme#2/</id>
+    <published>2019-02-03T09:05:32.163Z</published>
+    <updated>2018-10-14T03:55:51.970Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>实验环境：win xp32位虚拟机</li><li>程序：abexcrackme#2</li><li>实验工具：od<h4 id="破解程序"><a href="#破解程序" class="headerlink" title="破解程序"></a>破解程序</h4></li></ul><p>首先我们先观察一下程序的特征</p><p><img src="https://i.imgur.com/56MoLwG.png" alt=""></p><p>需要输入Name 和 Serial，检验后弹出正确的窗口<br>测试一下</p><p><img src="https://i.imgur.com/sP9pljo.png" alt=""></p><p>使用peid查看发现是VB程序，<br>用od打开</p><p><img src="https://i.imgur.com/rgn6rDv.png" alt=""></p><p>右键–&gt;Search for–&gt;All referenced text strings查看所有字符串<br>找到</p><p><img src="https://i.imgur.com/MgmnP1B.png" alt=""></p><p>进入字符串Congratulation!发现</p><p><img src="https://i.imgur.com/KhZJ3OX.png" alt=""><br>先是移动相关的字符串，然后调用消息框的代码04033BE</p><p>向上观察发现汇编代码中先压入了edx,eax然后call调用了函数，再执行test和je指令<br><img src="https://i.imgur.com/OhHyBDQ.png" alt=""><br>在32位的程序中函数调用时会将参数压入栈中，所以判断call调用的函数是判断字符串是否相等，可以在403321处下断点（F2）在重新开始程序（ctrl+f2），按F9运行程序，观察程序的运行，输入Name,Serial，这里设为123456，abcsdf，程序停在了403321处</p><p>在403329处下断点，按F9继续运行，查看edx,eax值</p><p><img src="https://i.imgur.com/hWQQCbe.png" alt=""></p><p>查看0012F4D4，0012F4C4存储在栈中的内存地址（选定地址–&gt;右键–&gt;Follow in dump）</p><p><img src="https://i.imgur.com/Qq85WlR.png" alt=""><br>此16个字节不是直接显示的字符串，可以使用在dump窗口long-&gt;Address with ASCII dump命令查看</p><p><img src="https://i.imgur.com/pTDoPqn.png" alt=""> </p><p>查看0012F4D4，0012F4C4在栈窗口中的值（Follow in stack）</p><p><img src="https://i.imgur.com/jYTS9Re.png" alt=""></p><p>可以发现eax为用户输入的Serial（VB使用unicode编码），而edx为实际的Serial值</p><p><img src="https://i.imgur.com/ZjjQvEc.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;实验环境：win xp32位虚拟机&lt;/li&gt;
+&lt;li&gt;程序：abexcrackme#2&lt;/li&gt;
+&lt;li&gt;实验工具：od&lt;h4 id=&quot;破解程序&quot;&gt;&lt;a href=&quot;#破解程序&quot; class=&quot;headerlink&quot; title=&quot;破解程序&quot;&gt;&lt;/a&gt;破解程序&lt;
+      
+    
+    </summary>
+    
+      <category term="reverse" scheme="https://life0sfc.github.io/categories/reverse/"/>
+    
+    
+      <category term="reverse" scheme="https://life0sfc.github.io/tags/reverse/"/>
     
   </entry>
   
