@@ -271,7 +271,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://life0sfc.github.io/2019/02/03/gdb的使用/">
+    <link itemprop="mainEntityOfPage" href="https://life0sfc.github.io/2019/02/03/逆向题--逆向找出正确的flagre2/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -290,7 +290,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/02/03/gdb的使用/" itemprop="url">gdb的使用</a></h1>
+                <a class="post-title-link" href="/2019/02/03/逆向题--逆向找出正确的flagre2/" itemprop="url">逆向题--逆向找出正确的flagre2</a></h1>
         
 
         <div class="post-meta">
@@ -325,8 +325,8 @@
               
               
                 <span itemprop="about" itemscope="" itemtype="http://schema.org/Thing">
-                  <a href="/categories/linux/" itemprop="url" rel="index">
-                    <span itemprop="name">linux</span>
+                  <a href="/categories/ctf/" itemprop="url" rel="index">
+                    <span itemprop="name">ctf</span>
                   </a>
                 </span>
 
@@ -343,8 +343,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2019/02/03/gdb的使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/03/gdb的使用/" itemprop="commentCount"></span>
+                <a href="/2019/02/03/逆向题--逆向找出正确的flagre2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/02/03/逆向题--逆向找出正确的flagre2/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -352,7 +352,7 @@
 
           
           
-             <span id="/2019/02/03/gdb的使用/" class="leancloud_visitors" data-flag-title="gdb的使用">
+             <span id="/2019/02/03/逆向题--逆向找出正确的flagre2/" class="leancloud_visitors" data-flag-title="逆向题--逆向找出正确的flagre2">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -377,7 +377,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  315
+                  400
                 </span>
               
 
@@ -404,23 +404,19 @@
       
         
           
-          gdb是linux下动态调试的工具，常见的动态调试工具主要有以下几个内容，我将结合gdb的命令进行介绍
-1、启动start
-2、断点b *地址
-b 符号名    break &lt;function&gt; 在函数体入口处下断点。
-3、单步si: step in
-源码单步：next
-4、查看内存x/[]i 对指定数量的指令进行反汇编
-x/[]x 显示指定长度的数据   $rax  
-x/[]s以字符串形式显示数据
-x/10w $esp 相当于显示栈上40B的数据，即栈上10个空间的数据
-除了以上常见的四点外，gdb的常见命令还有
+          题目：逆向找出正确的flagre2先检查一下没壳，32位的程序
+直接ida分析，查看伪c
+先是输入input,经过sub_401032()函数，在下面是一个循环，循环内看不太懂，看下程序内的字符串，只发现Try again!，没有看到显示成功的字符串，一步一步分析吧！
+进入sub_401032()函数观察发现进行了异或运算401100h^95h^input的第一个字符，得出return值的范围为401100h~4011FFh查看汇编代码
 
-set命令，常见的是set architecture，设置使用
+
+1 中将eax放入[ebp+var_1C]
+2 与0进行比较，执行后zf=0,不发生跳转
+3 call addr,addr范围为401100h~4011F
           ...
           <!--noindex-->
           <div class="post-button text-center">
-            <a class="btn" href="/2019/02/03/gdb的使用/#more" rel="contents">
+            <a class="btn" href="/2019/02/03/逆向题--逆向找出正确的flagre2/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
